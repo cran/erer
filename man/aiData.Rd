@@ -37,13 +37,13 @@ data(daBedRaw)
 imp8 <- aiData(x = daBedRaw,
   label = c("CN", "VN", "ID", "MY", "CA", "BR", "IT"),
   label.tot = "WD", prefix.value = "v", prefix.quant = "q",
-  start = c(2001, 1), end = c(2008, 12), freq = 12)
+  start = c(2001, 1), end = c(2008, 12), frequency = 12)
 imp4 <- update(imp8, label = c("CN", "VN", "ID"))
 imp5 <- update(imp4, label = c("CN", "VN", "ID", "MY"))
 imp8; imp4; imp5
 dat8 <- imp8$out
 
-dum  <- ts(0, start = start(dat8), end = end(dat8), freq = 12)
+dum  <- ts(0, start = start(dat8), end = end(dat8), frequency = 12)
 dum1 <- replace(dum, time(dum) == 2003+(10-1)/12, 1)
 dum2 <- replace(dum, time(dum) == 2004+(7 -1)/12, 1)
 dum3 <- replace(dum, time(dum) == 2005+(1 -1)/12, 1)

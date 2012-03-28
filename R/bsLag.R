@@ -14,7 +14,7 @@ bsLag <- function(h, lag, prefix = "", var.name,
 
     all <- data.frame(matrix(nrow=n1-lag, ncol=n2*(lag+1)))  
     for (i in 1:n2) {       
-      out <- data.frame(embed(mh[,i], dim=lag+1) ) 
+      out <- data.frame(embed(mh[,i], dimension=lag+1) ) 
       ww <- paste(prefix, var.name[i], suffix, "0", sep="")
       if (lag>=1) {
           for(j in 1:lag) {
@@ -27,7 +27,7 @@ bsLag <- function(h, lag, prefix = "", var.name,
       colnames(all)[ia:ib] <- ww
     }
 
-    all <- ts(all, start=c(start(h)[1], start(h)[2]+lag), end=end(h), freq=tsp(h)[3])       
+    all <- ts(all, start=c(start(h)[1], start(h)[2]+lag), end=end(h), frequency=tsp(h)[3])       
     del <- -1 * seq(from=1, to=n2*(lag+1), by=1+lag)
     final <- if(include.orig) {all} else {all[, del ]} 
     return(final)

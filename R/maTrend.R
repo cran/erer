@@ -4,10 +4,10 @@ maTrend <- function(q, n = 300, nam.c, nam.d, ...)
     stop("Need an object from 'maBina()'.\n") }
   if (missing(nam.c)) {
     stop("Need a continous variable name'.\n") }
-  if (identical(unique(q$w$x[, nam.c]), c(0, 1))) {
+  if (identical(sort(unique(q$w$x[, nam.c])), c(0, 1))) {
     stop("nam.c must be a continuous variable.") }
   if (!missing(nam.d)) {
-    if (!identical(unique(q$w$x[, nam.d]), c(0, 1))) {
+    if (!identical(sort(unique(q$w$x[, nam.d])), c(0, 1))) {
       stop("nam.d must be a binary variable.") } }
     
   xx <- q$w$x

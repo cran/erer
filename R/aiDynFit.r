@@ -4,7 +4,7 @@ aiDynFit <- function(w, dum.dif = FALSE, ...)
       stop("Please provide an object from 'aiStaFit'.\n")}
     y <- w$y
     hShare <- bsLag(h = diff(y[, w$share]), lag = 1, prefix = "diff.")   
-    resid <- ts(residuals(w$est), start = start(y), freq = tsp(y)[3])
+    resid <- ts(residuals(w$est), start = start(y), frequency = tsp(y)[3])
     colnames(resid) <- paste("resi.", w$share[-w$nOmit], sep="")
     hResid <- bsLag(h = resid, lag = 1, include.orig = FALSE)    
     hExpen <- diff(y[, w$expen])
@@ -34,7 +34,7 @@ aiDynFit <- function(w, dum.dif = FALSE, ...)
              tsp(hPrice)[1], tsp(hShift)[1])      
     loc <- which(sta == max(sta))        
     beg <- start(vaa[[loc]])
-    daDyn <- window(comb, start = beg, end = end(y), freq = tsp(y)[3])
+    daDyn <- window(comb, start = beg, end = end(y), frequency = tsp(y)[3])
 
     share.d  <- paste("diff.", w$share, ".t_0", sep="")
     share.dl <- paste("diff.", w$share, ".t_1", sep="")
