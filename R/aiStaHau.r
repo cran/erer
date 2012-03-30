@@ -21,9 +21,9 @@ aiStaHau <- function(x, instr, choice = FALSE, ...)
     formuHau <- as.formula(paste(nam[1], "~."))       
     aux <- lm(formula = formuHau, data = daHau)   
 
-    res <- ts(residuals(aux), start=start(daHau), freq=frq) 
-    fit <- ts(fitted(aux),    start=start(daHau), freq=frq)   
-    daFit <- window(ts.union(x$y, res, fit), start=start(x$y) + c(0,1), freq=frq) 
+    res <- ts(residuals(aux), start=start(daHau), frequency=frq) 
+    fit <- ts(fitted(aux),    start=start(daHau), frequency=frq)   
+    daFit <- window(ts.union(x$y, res, fit), start=start(x$y) + c(0,1), frequency=frq) 
     colnames(daFit) <- c(colnames(x$y), "resid", exp.fit)
 
     aiBase <- aiStaFit(y=daFit, share=x$share, price=x$price, expen=x$expen, 

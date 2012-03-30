@@ -5,7 +5,7 @@ aiData <- function(x, label, label.tot = "WD", prefix.value = "v",
     stop("class(y) should be c('mts', 'ts').\n")}
   if (is.null(start)) start <- start(x)
   if (is.null(end)  ) end <- end(x)
-  x2 <- window(x, start = start, end = end, freq = tsp(x)[3])
+  x2 <- window(x, start = start, end = end, frequency = tsp(x)[3])
   
   lab.value <- paste(prefix.value, label, sep="")
   lab.quant <- paste(prefix.quant, label, sep="")

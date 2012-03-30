@@ -24,9 +24,9 @@ The name of the output data is composed of four parts: \code{prefix}, \code{var.
 \author{Changyou Sun (\email{csun@cfr.msstate.edu})}
 \examples{
 # simple example
-h1 <- ts(data=cbind(1:24), start=c(2001, 1), freq=12)
-h2 <- ts(data=cbind(1:24, 25:48), start=c(2001, 1), freq=12)
-h3 <- ts(data=cbind(1:4, 5:8, 9:12), start=c(2001, 1), freq=4)
+h1 <- ts(data=cbind(1:24), start=c(2001, 1), frequency=12)
+h2 <- ts(data=cbind(1:24, 25:48), start=c(2001, 1), frequency=12)
+h3 <- ts(data=cbind(1:4, 5:8, 9:12), start=c(2001, 1), frequency=4)
 colnames(h2) <- c("aa", "bb")
 colnames(h3) <- c("cc", "dd", "ee")
 h1; h2; h3
@@ -50,7 +50,7 @@ colnames(lag.small)
 
 resid <- residuals(lm(qCN ~ vCN, data = small))
 res <- ts(resid, start=start(small), end=end(small), 
-    freq=tsp(small)[3])
+    frequency=tsp(small)[3])
 lag.res <- bsLag(h=res, lag=2, prefix="resid.", var.name="china")
 lag.res
 }
