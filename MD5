@@ -1,4 +1,4 @@
-012413e50d71830ce014b291f54bbc55 *DESCRIPTION
+f616b7d66a4f9690f4d953c62c7bf1e5 *DESCRIPTION
 438c1e5242a522de84a4f8ab624cb5f1 *NAMESPACE
 07991872370a1efa0814b00c9a3f5396 *R/aiData.r
 f4005f12ee3b176f007b3f60fcac6080 *R/aiDiag.r
@@ -7,11 +7,12 @@ a5387e439b6c2ed2a8cb5ba3a6994ef7 *R/aiDynFit.r
 b97704b9ae90033c817df591e8838c90 *R/aiStaFit.r
 4b1cf5bbc9d505d18c80580c40e998fd *R/aiStaHau.r
 d46c58eb2946e5822c7bbbf225e39b0c *R/bsFormu.r
-ce52daded5edd197569dddd7bccf538e *R/bsLag.R
+8917b4ea6732c933b7b7b782dddf98f9 *R/bsLag.R
 44911bea9f5cbbe96db882b44a39934b *R/bsStat.R
 5e396ef99850023a102c333235d7d86c *R/bsTab.r
 d94033e17e3aaac9e82714b90464a482 *R/evReturn.r
 bb894bcd3d7fef7421b36d5eb29dc0ee *R/evRisk.r
+f50c2616e907500a1e80f74e0b13e25b *R/head.ts.r
 ed9c9eae79c691f13b61baf4176ef582 *R/maBina.R
 52d056a08e4c43bd21c51104b2ed5ec7 *R/maTrend.R
 16c9c3eda8ff0289cd5e538a66457bc6 *R/plot.evReturn.r
@@ -26,7 +27,7 @@ c12137e2b8255e654ede4548cbc336b0 *R/print.evRisk.r
 5ee8fbb006453e26ea4053e06a9b3089 *data/daExp.rda
 5f05ed192921879b367a12977e598ac9 *data/daIns.rda
 b5cfbfa7f28aa8116e3b170627bd563d *data/daPe.rda
-0f248dd637fcf02b884cb78aa142a799 *inst/doc/erer-manual.pdf
+e1b98fe1fed5604023ec009bf4d4b470 *inst/doc/erer-manual.pdf
 ff8ace190ebef88f00591a589ee23126 *man/aiData.Rd
 2e54024724791c5a45555a148a6841a6 *man/aiDiag.Rd
 59d5c30d9ada4ab2c56d48662e706e19 *man/aiDynFit.Rd
@@ -34,7 +35,7 @@ a3ea20983e4660ac12fa51dd9d3b52a5 *man/aiElas.Rd
 a22dff3f7c245e1b3dcafb95b1544f1e *man/aiStaFit.Rd
 bd16716aa0a9d23763e8d0f608b663d0 *man/aiStaHau.Rd
 049752ab58c5db6d7d7b5e4922a7436e *man/bsFormu.Rd
-67f69863c729a75485633f45b7b9ff2e *man/bsLag.Rd
+c58cecaf1b279b63c4403196627804bf *man/bsLag.Rd
 7711c6fe5e74d300e2471361b66198a3 *man/bsStat.Rd
 48a212d0347079bebe70246e46890521 *man/bsTab.Rd
 433d6a05b7e6322434aecf157218993a *man/daBed.Rd
@@ -42,9 +43,10 @@ bd16716aa0a9d23763e8d0f608b663d0 *man/aiStaHau.Rd
 cf423370318c6d49dd96b1bed82d2729 *man/daExp.Rd
 6182135ffd022c7c1c40294e7a5ccd14 *man/daIns.Rd
 ea8fc3f8a157fc48f0fdfad980f619e7 *man/daPe.Rd
-564e353c855b57ca159d4c59d21a07c4 *man/erer-package.Rd
+68d8f0a738116c9f4818e4115e41774f *man/erer-package.Rd
 2e30ecec7fd20699eb5e30946a03401a *man/evReturn.Rd
 0804edfa24c50ddcd0815e9b43c9de2a *man/evRisk.Rd
+5624daa7d4416c5744fa8854edf40329 *man/head.ts.Rd
 d15c9c428eb66b08fa081d2e58c4d486 *man/maBina.Rd
 508c602c7282e0870ade13f894383e7c *man/maTrend.Rd
 736324e90cb64297e6a65db6ed4d8ecf *man/plot.evReturn.Rd
