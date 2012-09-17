@@ -2,11 +2,14 @@
 \alias{bsStat}
 \title{Summary of Basic Statistics}
 \description{Calcluate basic statistics of data.}
-\usage{bsStat(y, two = NULL, digits = c(2, 1), ...)}
+\usage{bsStat(y, two = NULL, digits = c(2, 2), use = 'complete.obs', 
+  na.rm = TRUE, ...)}
 \arguments{
   \item{y }{ input data for summary statistics.}
   \item{two }{ a logical value of whether to report the correlation and summary statistics separately; if \code{NULL } and the number of variables is less than 11, its value will be set to \code{TRUE}.}
   \item{digits }{ digits for the output data, one for correlation coefficients and the other for mean and others; if a single scalar is supplied, it will be used for both.}
+  \item{use }{ an argument for correlation coefficient; see \code{cor} for detail.}
+  \item{na.rm }{ an argument for \code{mean}, \code{sd}, \code{min}, and \code{max}.}  
   \item{\dots }{ additional arguments to be passed.}
 }
 \details{
