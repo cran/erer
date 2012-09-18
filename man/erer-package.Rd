@@ -10,8 +10,8 @@ This package contains functions and datasets for the book of 'Empirical Research
 \tabular{ll}{
 Package:  \tab erer \cr
 Type:     \tab Package \cr
-Version:  \tab 1.2 \cr
-Date:     \tab 2010-11-15 (first built); 2012-6-26 (last) \cr
+Version:  \tab 1.3 \cr
+Date:     \tab 2010-11-15 (first built); 2012-9-17 (last) \cr
 Depends:  \tab R (>= 2.14.0), systemfit, lmtest, tseries, ggplot2 \cr
 License:  \tab GPL (>= 2) \cr
 LazyLoad: \tab yes \cr
