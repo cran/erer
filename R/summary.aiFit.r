@@ -1,7 +1,4 @@
 summary.aiFit <- function(object, digits = 3, ...) {
-    if (class(object)[2] != "aiFit") {
-        stop("\nNeed an object from 'aiStaFit' or 'aiDynFit'.\n")
-    }
     z <- object
     N <- z$nParam * 2
     out <- bsTab(w = z$est, need = "1T", digits = digits)

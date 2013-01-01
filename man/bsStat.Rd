@@ -13,7 +13,7 @@
   \item{\dots }{ additional arguments to be passed.}
 }
 \details{
-Two set of summary statistics are generated. One is correlation coefficients and the other is mean, minimum, maximum, standard error, and number of observations. When \code{two} is unspecified and the number of variables is bigger than ten, the two sets are reported separately; otherwise, it is reported as a single data frame object.
+Two set of summary statistics are generated. One is correlation coefficients and the other is mean, minimum, maximum, standard deviation, and number of observations. When \code{two} is unspecified and the number of variables is bigger than ten, the two sets are reported separately; otherwise, it is reported as a single data frame object.
 }
 \value{
 A dataframe or list of the summary statistics.

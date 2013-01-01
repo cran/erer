@@ -1,9 +1,9 @@
 aiDiag <- function(x, digits = 3, ...){
-    if ((class(x)[1] != "aiStaFit") & (class(x)[1] != "aiDynFit")) {
+    if ((!inherits(x, "aiStaFit")) & (!inherits(x, "aiDynFit"))) {
     stop("Please provide an object from 'aiStaFit' or 'aiDynFit'.\n")
     }
-    if (class(x)[1] == "aiStaFit") dat <- x$y
-    if (class(x)[1] == "aiDynFit") dat <- x$daDyn     
+    if (inherits(x, "aiStaFit")) dat <- x$y
+    if (inherits(x, "aiDynFit")) dat <- x$daDyn     
     formu  <- x$formula
     nShare <- x$nShare
     

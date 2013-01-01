@@ -1,9 +1,5 @@
 plot.maTrend <- function(x, ...)
-{
-  if (class(x) != "maTrend") {
-    stop("Please provide an object from 'maTrend()'.\n")
-  }
-  
+{ 
   pr <- x$trend
   yvar <- toupper(as.character(x$q$w$formula)[2])
   

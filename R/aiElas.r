@@ -1,11 +1,11 @@
 aiElas <- function(z, digits = 3, ...) {
-  if (class(z)[2] != "aiFit") {
+  if (!inherits(z, "aiFit")) {
       stop("\nPlease provide an object from 'aiStaFit' or 'aiDynFit'.\n") }
   est <- z$est;      
   cof <- coef(est);  vco   <- vcov(est);  df <- df.residual(est)	
   nE  <- z$nExoge;   nS    <- z$nShare;   nP <- z$nParam; nO <- z$nOmit 
-  if (class(z)[1] == "aiStaFit") {e.share <- z$share  }
-  if (class(z)[1] == "aiDynFit") {e.share <- z$w$share}
+  if (inherits(z, "aiStaFit")) {e.share <- z$share  }
+  if (inherits(z, "aiDynFit")) {e.share <- z$w$share}
   av <- colMeans(z$y[, e.share])
   av.sh <- av[c(e.share[-nO], e.share[nO])]  
  

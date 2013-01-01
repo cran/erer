@@ -1,6 +1,3 @@
-print.evRisk <- function(x, ...){
-    if (class(x) != "evRisk") {
-        stop("Please provide an object from 'evRisk'.\n")
-    }    
+print.evRisk <- function(x, ...) {   
     print(x$reg)
 }

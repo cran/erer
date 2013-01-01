@@ -1,6 +1,6 @@
 aiDynFit <- function(w, dum.dif = FALSE, ...)
 {
-    if (class(w)[1] != "aiStaFit") {
+    if (!inherits(w, "aiStaFit")) {
       stop("Please provide an object from 'aiStaFit'.\n")}
     y <- w$y
     hShare <- bsLag(h = diff(y[, w$share]), lag = 1, prefix = "diff.")   

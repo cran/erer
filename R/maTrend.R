@@ -1,9 +1,7 @@
 maTrend <- function(q, n = 300, nam.c, nam.d, ...)
 {
-  if (class(q) != "maBina") {
-    stop("Need an object from 'maBina()'.\n") }
-  if (missing(nam.c)) {
-    stop("Need a continous variable name'.\n") }
+  if (!inherits(q, "maBina")) {stop("Need an object from 'maBina()'.\n")}
+  if (missing(nam.c)) {stop("Need a continous variable name'.\n")}
   if (identical(sort(unique(q$w$x[, nam.c])), c(0, 1))) {
     stop("nam.c must be a continuous variable.") }
   if (!missing(nam.d)) {

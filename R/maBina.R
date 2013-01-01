@@ -1,9 +1,7 @@
 maBina <- function(w, x.mean = TRUE, rev.dum = TRUE, 
   digits = 3, ...)
 {
-  if (class(w)[1] != "glm") {
-    stop("Please provide an object from 'glm()'.\n")
-  }
+  if (!inherits(w, "glm")) {stop("Please provide an object from 'glm()'.\n")}
   link <- w$family$link
   if (link != "probit" & link != "logit") {
     stop("Need a binary probit or logit model'.")}

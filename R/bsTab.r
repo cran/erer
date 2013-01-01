@@ -21,8 +21,7 @@ bsTab <- function(w,
     if(wrap.TE == "[" ) n <- c("[", "]")
   }
   
-  if( (class(w) == "glm")[1] | (class(w) == "lm" )[1]  |
-      (class(w) == "systemfit")[1] ) {
+  if (inherits(w, c("glm", "lm", "systemfit"))) {
     m <- data.frame(summary(w)$coefficients)
   } else {
     if (ncol(w) >= 4) { m <- data.frame(w[, 1:4])
