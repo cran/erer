@@ -1,5 +1,5 @@
 evRisk <- function(x, m = 50, r.free = "tbill", ...) {
-  if (class(x) != "evReturn") stop("Need an object from 'evReturn'.\n") 
+  if (!inherits(x, "evReturn")) stop("Need an object from 'evReturn'.\n") 
 
   reg.n <- c("N", "firm", "event.date",
      "alpha.c", "alpha.e", "alpha.t", "alpha.p", "alpha.s",

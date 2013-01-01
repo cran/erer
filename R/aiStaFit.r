@@ -1,8 +1,7 @@
 aiStaFit <- function(y, share, price, expen, shift = NULL, omit = NULL,
     hom = TRUE, sym = TRUE, ...)
 {
-    if (!identical(class(y), c("mts", "ts"))) {
-        stop("class(y) should be c('mts', 'ts').\n")}   
+    if (!inherits(y, "mts")) {stop("class(y) should be 'mts').\n")}   
     nShare <- length(share)
     nExoge <- 1 + length(expen) + length(shift)
     nParam <- nExoge + nShare

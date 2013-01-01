@@ -1,8 +1,7 @@
 aiData <- function(x, label, label.tot = "WD", prefix.value = "v", 
   prefix.quant = "q", start = NULL, end = NULL, ...)
 {
-  if (!identical(class(x), c("mts", "ts"))) {
-    stop("class(y) should be c('mts', 'ts').\n")}
+  if (!inherits(x, "mts")) {stop("class(x) should be 'mts'.\n")}
   if (is.null(start)) start <- start(x)
   if (is.null(end)  ) end <- end(x)
   x2 <- window(x, start = start, end = end, frequency = tsp(x)[3])

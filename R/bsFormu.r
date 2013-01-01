@@ -1,7 +1,6 @@
-bsFormu <- function(name.y, name.x, intercept = TRUE, ... )
+bsFormu <- function(name.y, name.x, intercept = TRUE, ...)
 {
-  if (class(name.y) != "character" | 
-    class(name.x) != "character") {
+  if (!is.character(name.y) | !is.character(name.x)) {
     stop("Names must be character vectors.\n")
   } 
   iy <- length(name.y)
@@ -24,11 +23,11 @@ bsFormu <- function(name.y, name.x, intercept = TRUE, ... )
       nn <- paste(name.y[i], st, name.x[1], sep = "")
       if (ix > 1) {
         for (j in 2:ix) {
-          nn <- paste(nn, " + ", name.x[j], sep = "")    
+          nn <- paste(nn, " + ", name.x[j], sep = "")
         }
       }
       formu[[i]] <- as.formula(nn)
     }
   }
-  return(formu)   
+  return(formu)
 }

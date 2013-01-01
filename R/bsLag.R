@@ -10,7 +10,7 @@ bsLag <- function(h, lag, prefix = "", var.name,
         } else {var.name <- colnames(h)}
     } else {
         if(length(var.name)!=n2 ) {
-        stop("Length of 'var.name' should equal to the number of variables")}
+        stop("Length of 'var.name' should equal to variable numbers")}
     }
 
     all <- data.frame(matrix(nrow = n1 - lag, ncol = n2 * (lag + 1)))  
@@ -34,6 +34,7 @@ bsLag <- function(h, lag, prefix = "", var.name,
 
     del <- grep(paste(suffix, '0', sep=''), colnames(all))
     out <- if(include.orig) {all} else {all[, -del ]}   
-    fia <- ts(out, start=start(h) + c(0, lag), end=end(h), frequency=tsp(h)[3])
+    fia <- ts(out, start=start(h) + c(0, lag), end=end(h), 
+      frequency=tsp(h)[3])
     return(fia)
 } 

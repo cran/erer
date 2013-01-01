@@ -1,9 +1,7 @@
 aiStaHau <- function(x, instr, choice = FALSE, ...)
 {
-    if (class(x)[1] != "aiStaFit") {
-      stop("Please provide an object from 'aiStaFit'.\n")}
-    if (class(instr) !="ts") {
-        stop("instr should be a single time series.\n")}
+    if (!inherits(x, "aiStaFit")) {stop("Need an object from 'aiStaFit'.\n")}
+    if (!inherits(instr, "ts")) {stop("Need a time series for 'instr'.\n")}
     if (!identical(tsp(x$y), tsp(instr))) {
         stop("x and instr should have the same imension.\n")}
     frq <- tsp(x$y)[3]

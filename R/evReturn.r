@@ -1,7 +1,7 @@
 evReturn <- function(y, firm, event.date, y.date = "date", 
   index = "sp500", event.win = 3, est.win = 250, digits = 4, ...) 
 {
-  if (class(y) != "data.frame") {stop("y should be a data frame.\n")}
+  if (!is.data.frame(y)) stop("y should be a data frame.\n")
   N <- length(firm);  E <- event.win * 2 + 1
   event.date <- rep(event.date, times=N)[1:N]
   reg.n <- c("N", "firm", "event.date",
