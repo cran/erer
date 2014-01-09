@@ -1,5 +1,5 @@
 aiStaFit <- function(y, share, price, expen, shift = NULL, omit = NULL,
-    hom = TRUE, sym = TRUE, ...)
+    hom = TRUE, sym = TRUE, AR1 = FALSE, rho.sel = c("all", "mean"),...)
 {
     if (!inherits(y, "mts")) {stop("class(y) should be 'mts').\n")}   
     nShare <- length(share)
@@ -35,13 +35,56 @@ aiStaFit <- function(y, share, price, expen, shift = NULL, omit = NULL,
     if(is.null(omit)) {
         nOmit <- length(share); omit <- share[nOmit]
     } else { nOmit <- which(share == omit) }
-    sa <- fa[-nOmit]        
-    est <- systemfit(sa, method = "SUR", data = y, 
-        restrict.matrix = aa, restrict.rhs = bb)
-    result <- list(y=y, share=share, price=price, expen=expen, 
-        shift=shift, omit=omit, nOmit=nOmit, hom=hom, sym=sym,
-        nShare=nShare, nExoge=nExoge, nParam=nParam, nTotal=nTotal,
-        formula=sa, res.matrix=aa, res.rhs=bb, est=est, call=sys.call())
+    sa <- fa[-nOmit]    
+    est <- systemfitAR(formula = sa, data = data.frame(y), method="SUR",
+        restrict.matrix = aa, restrict.rhs = bb, AR1 = AR1, 
+        rho.sel = rho.sel)
+
+#   # Omitted equation: coefficient
+#    co <- matrix(0, nrow = nShare - 1, ncol = nParam)
+#    for (i in 1:(nShare - 1)) {
+#      co[i, ] <- coef(est)[((i-1) * nParam + 1):(i * nParam)]
+#    }
+#    co.omit <- c(1, rep(0, (nParam-1))) - colSums(co)
+#   
+#   # Omitted equation: variance for gamma_last and exoge variables
+#    cof <- coef(est); vco <- vcov(est)
+#    gama.vc <- 0
+#    for (i in 1:(nShare - 1)) { 
+#      for (j in 1:(nShare - 1)) {
+#        gama.vc <- gama.vc + vco[nParam * i, nParam * j]
+#      }
+#    }
+#    ex.vc <- rep(0, nExoge)
+#    for(k in 1:nExoge) {
+#      for (i in 1:(nShare - 1)) { 
+#        for (j in 1:(nShare - 1)) {
+#          ex.vc[k] <- ex.vc[k] + vco[nParam * (i-1) + k, nParam * (j-1) + k]
+#        }
+#      }
+#    }
+#    
+#    # Omitted equation: combined results
+#    df <- df.residual(est)
+#    c.ex <- co.omit[c(1:nExoge, nParam)]
+#    e.ex <- sqrt(c(ex.vc, gama.vc))
+#    t.ex <- c.ex / e.ex
+#    p.ex <- 2 * ( 1- pt(abs(t.ex), df) )
+#    ex <- data.frame(cbind(c.ex, e.ex, t.ex, p.ex))
+
+    result <- listn(y, share, price, expen, shift, omit, 
+      nOmit, hom, sym, nShare, nExoge, nParam, nTotal, formula=sa, 
+      res.matrix=aa, res.rhs=bb, est, AR1, call=sys.call())
     class(result) <- c("aiStaFit", "aiFit")
     return(result)
+}
+
+# print method related to aiStaFit, aiDynFit, aiStaHau
+print.aiFit <- function(x, ...)
+{
+  if (inherits(x, "aiStaHau")) {
+    print(x$ratio)
+  } else {
+    print(x$est)
+  }
 }

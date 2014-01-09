@@ -1,7 +1,10 @@
 \name{evReturn}
 \alias{evReturn}
+\alias{print.evReturn}
+\alias{plot.evReturn}
 \title{Estimating Abnormal Return from Event Analysis}
 \description{Conduct an event analysis and estimate abnormal returns over time and across firms.}
+
 \usage{evReturn(y, firm, event.date, y.date = "date",
   index = "sp500", event.win = 3, est.win = 250, digits = 4, \dots)}
 \arguments{
@@ -38,11 +41,36 @@ Return a list object of class "evReturn" with the following components:
   \item{call }{ a record of the system call; this allows \code{update.default} to be used. }
 }
 
-\references{Mei, B., and C. Sun. 2008. Event analysis of the impact of mergers and acquisitions on the financial performance of the U.S. forest products industry. Forest Policy and Economics 10(5):286-294.}
+\section{Methods}{
+  Two methods are defined as follows:
+  \describe{
+    \item{\code{print}:}{print three selected outputs.}
+    \item{\code{plot}:}{plot average cumulative abnormal returns from event analysis versus days in event window.}    
+  }
+}
+
+\references{
+Mei, B., and C. Sun. 2008. Event analysis of the impact of mergers and acquisitions on the financial performance of the U.S. forest products industry. Forest Policy and Economics 10(5):286-294.
+
+Sun, C., and X. Liao. 2011. Effects of litigation under the Endangered Species Act on forest firm values. Journal of Forest Economics 17(4):388-398.
+}
+
 \author{Changyou Sun (\email{csun@cfr.msstate.edu})}
-\seealso{\code{\link{print.evReturn}}; \code{\link{plot.evReturn}}; \code{\link{evRisk}}.}
+\seealso{\code{\link{evRisk}}}
 
 \examples{
-# see Mei and Sun (2008).
+data(daEsa)
+
+# event analysis for one firm and one event window
+hh <- evReturn(y = daEsa, firm = "wpp", 
+   y.date = "date", index = "sp500", est.win = 250, digits = 3,
+   event.date = 19990505, event.win = 5)
+hh; plot(hh)
+
+# event analysis for many firms and one event window
+hh2 <- update(hh, firm = c("tin", "wy", "pcl", "pch")); hh2
+
+# event analysis for many firms and many event windows: need a for loop
+
 }
 \keyword{regression}

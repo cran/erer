@@ -21,15 +21,16 @@ aiStaHau <- function(x, instr, choice = FALSE, ...)
 
     res <- ts(residuals(aux), start=start(daHau), frequency=frq) 
     fit <- ts(fitted(aux),    start=start(daHau), frequency=frq)   
-    daFit <- window(ts.union(x$y, res, fit), start=start(x$y) + c(0,1), frequency=frq) 
+    daFit <- window(ts.union(x$y, res, fit), start=start(x$y) + c(0,1), 
+      frequency=frq) 
     colnames(daFit) <- c(colnames(x$y), "resid", exp.fit)
 
     aiBase <- aiStaFit(y=daFit, share=x$share, price=x$price, expen=x$expen, 
         shift=x$shift, omit=x$omit, hom=FALSE, sym=FALSE)
     aiHaus <- update(aiBase, shift=c(x$shift, "resid"))
     ratio <- lrtest(aiBase$est, aiHaus$est)
-    result <- list(daHau = daHau, formuHau = formuHau, regHau = aux,
-       daFit = daFit, aiBase = aiBase, aiHaus = aiHaus, ratio = ratio)
+    result <- listn(daHau, formuHau, regHau = aux,
+       daFit, aiBase, aiHaus, ratio)
     class(result) <- c("aiStaHau", "aiFit")
     return(result)
 } 

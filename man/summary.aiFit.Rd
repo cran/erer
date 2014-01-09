@@ -10,8 +10,10 @@
 }
 \details{This wraps up the coefficents and statistics from aiFit by equation.}
 \value{A data frame object with coefficients and related statistics by equation.}
+
 \author{Changyou Sun (\email{csun@cfr.msstate.edu})}
 \seealso{\code{\link{aiStaFit}} and \code{\link{aiDynFit}}.}
+
 \examples{
 # see the examples for 'aiDynFit'.
 }

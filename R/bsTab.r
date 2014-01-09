@@ -27,13 +27,11 @@ bsTab <- function(w,
     if (ncol(w) >= 4) { m <- data.frame(w[, 1:4])
     } else { stop("w should have at least four columns.\n") }  
   }
-  m[, 1] <- round(m[, 1], digits[1])   
-  m[, 2] <- round(m[, 2], digits[2]) 
-  m[, 3] <- round(m[, 3], digits[3])   
-  m[, 4] <- round(m[, 4], digits[4])
   colnames(m) <- c("coef", "error", "t.val", "p.val")   
-  m <- format(m, trim = TRUE, digits=digits, nsmall=digits, 
-    scientific = FALSE)
+  for (i in 1:4) {
+    m[, i] <- sprintf(paste("%.", digits[[i]], "f", sep=""), m[, i])
+  } 
+  
   m$sig <- ifelse(              m[,4]<=P[1], S[1],
            ifelse(m[,4]> P[1] & m[,4]<=P[2], S[2],
            ifelse(m[,4]> P[2] & m[,4]<=P[3], S[3], S[4])))

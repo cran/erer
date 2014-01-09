@@ -13,6 +13,7 @@
 \value{Return a data frame object with the statistics and p values for the four tests by equation.}
 
 \references{Wan, Y., C. Sun, and D.L. Grebner. 2010. Analysis of import demand for wooden beds in the United States. Journal of Agricultural and Applied Economics 42(4):643-658.}
+
 \author{Changyou Sun (\email{csun@cfr.msstate.edu})}
 \seealso{\code{\link{aiStaFit}}; \code{\link{aiDynFit}}.}
 

@@ -11,7 +11,7 @@ maTrend <- function(q, n = 300, nam.c, nam.d, ...)
   xx <- q$w$x
   link <- q$w$family$link
   b.est <- as.matrix(coef(q$w))
-  result <- list(q=q, nam.c=nam.c)
+  result <- listn(q, nam.c)
  
   mm <- matrix(colMeans(xx), ncol=ncol(xx), 
     nrow=n, byrow=TRUE)
@@ -47,4 +47,27 @@ maTrend <- function(q, n = 300, nam.c, nam.d, ...)
   result$trend <- trend
   class(result) <- "maTrend"
   return(result)
+}
+
+# print and plot method for 'maTrend'
+print.maTrend <- function(x, ...) {
+  cat("\n===========================================")
+  cat("\nCalculated Probability Matrix\n")
+  cat("===========================================\n")
+  print(dim(x$trend)); print(tail(x$trend))
+}
+
+plot.maTrend <- function(x, ...) { 
+  pr <- x$trend; yvar <- toupper(as.character(x$q$w$formula)[2])   
+  plot(pr[, 2] ~ pr[, 1], type="l", lty=1,
+    ylim=c(min(pr[, -1]), max(pr[, -1])), 
+    xlab=toupper(x$nam.c),
+    ylab=paste("Probability (", yvar, " = 1)", sep=""), ... )
+  abline(v=colMeans(x$q$w$x)[x$nam.c], lty=4)
+  grid()
+  
+  if (!is.null(x$nam.d)) {  
+    lines(pr[, 3] ~ pr[, 1], type="l", lty=2)
+    lines(pr[, 4] ~ pr[, 1], type="l", lty=3)
+  }
 }

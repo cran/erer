@@ -1,5 +1,7 @@
 \name{maTrend}
 \alias{maTrend}
+\alias{print.maTrend}
+\alias{plot.maTrend}
 \title{Trend of Marginal Effects}
 \description{This function computes the change of probability for a continuous variable, and furthermore, stratifies the probability through a binary independant variable.}
 
@@ -23,6 +25,14 @@
   \item{nam.d }{ if \code{nam.d} is specified, the name of a binary variable .}
   \item{m1 }{ if \code{nam.d} is specified, the matrix of \code{mm} with the column value for \code{nam.d} replaced by 1}
   \item{m0 }{ if \code{nam.d} is specified, the matrix of \code{mm} with the column value for \code{nam.d} replaced by 0}
+}
+
+\section{Methods}{
+  Two methods are defined as follows:
+  \describe{
+    \item{\code{print}:}{print the probability output.}
+    \item{\code{plot}:}{Plot the probability values for a continuous variable. If a strata is specified through \code{nam.d} in \code{maTrend()}, then the stratified values also are shown.}    
+  }
 }
 
 \references{Greene, W.H. 2003. Econometric Analysis (5th ed.). Prentice Hall, New York. 1026 P.}

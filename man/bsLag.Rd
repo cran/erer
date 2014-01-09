@@ -2,6 +2,7 @@
 \alias{bsLag}
 \title{Lagged Time Series}
 \description{Generate a set of lagged time series for time series data.}
+
 \usage{
 bsLag(h, lag, prefix = "", var.name, suffix = ".t_", 
     include.orig = TRUE, by.lag = FALSE, ...)

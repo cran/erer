@@ -1,7 +1,9 @@
 \name{evRisk}
 \alias{evRisk}
+\alias{print.evRisk}
 \title{Risk Evaluation for Event Analysis}
 \description{Conduct a risk analysis by firm and evaluate the change of risk before and after an event. The model used is the Captial Asset Pricing Model.}
+
 \usage{evRisk(x, m = 50, r.free = "tbill", \dots)}
 \arguments{
   \item{x }{ a object from \code{evReturn}.}
@@ -19,11 +21,28 @@ Return a list object of class "evReturn" with the following components:
   \item{reg }{ regression coefficients by firm.}
 }
 
+\section{Methods}{
+  One method is defined as follows:
+  \describe{
+    \item{\code{print}:}{print selected outputs.}
+  }
+}
+
 \references{Mei, B., and C. Sun. 2008. Event analysis of the impact of mergers and acquisitions on the financial performance of the U.S. forest products industry. Forest Policy and Economics 10(5):286-294.}
 \author{Changyou Sun (\email{csun@cfr.msstate.edu})}
-\seealso{\code{\link{evReturn}}; \code{\link{print.evRisk}}.}
+\seealso{\code{\link{evReturn}}}
 
 \examples{
-# see Mei and Sun (2008).
+
+data(daEsa)
+
+hh <- evReturn(y = daEsa, firm = "wpp", 
+   y.date = "date", index = "sp500", est.win = 250, digits = 3,
+   event.date = 19990505, event.win = 5)
+hh2 <- update(hh, firm = c("tin", "wy", "pcl", "pch"))
+
+kk <- evRisk(x = hh2, m = 100, r.free="tb3m")
+kk
+
 }
 \keyword{regression}

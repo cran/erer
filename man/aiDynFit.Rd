@@ -2,13 +2,19 @@
 \alias{aiDynFit}
 \title{Fitting a Dynamic AIDS Model}
 \description{Estimate a dynamic AIDS model for a system.}
-\usage{aiDynFit(w, dum.dif = FALSE, ...)}
+
+\usage{aiDynFit(w, dum.dif = FALSE, AR1 = FALSE,
+  rho.sel = c("all", "mean"), ...)}
 \arguments{
   \item{w }{ a object of class \code{aiStaFit}.}
   \item{dum.dif }{ a logical value (default of FALSE) of whether to take a difference on the dummy variables passed from \code{w}.}
+  \item{AR1 }{ whether first-degree autocorrelation should be corrected.}
+  \item{rho.sel }{ if \code{AR1 = TRUE}, there are two ways of computing the autocorrelation coefficient.} 
   \item{\dots }{ additional arguments to be passed.}
 }
-\details{This estimates a dynamic AIDS model. The residuals from the statis AIDS model are included. As it is programmed now, only one lag is allowed for the share variables on the right-hand side.}
+
+\details{This estimates a dynamic AIDS model. The residuals from the statis AIDS model are included. As it is programmed now, only one lag is allowed for the share variables on the right-hand side. Autocorrelation in the residuals can be corrected following the treatment in Berndt (1975).}
+
 \value{
 Return a list object of class "aiFit" and "aiDynFit" with the following components:
   \item{w }{ a object of class \code{aiStaFit}. }
@@ -31,11 +37,23 @@ Return a list object of class "aiFit" and "aiDynFit" with the following componen
   \item{res.matrix }{ restriction matrix for \code{hom} or \code{sym}, or both. }
   \item{res.rhs }{ right-hand values for tests of \code{hom} or \code{sym}, or both. }
   \item{est }{ the dynamic AIDS model estimated. }
+}  
+
+\section{Methods}{
+  One method is defined as follows:
+  \describe{
+    \item{\code{print}:}{print the first several observations of the final data.}
+  }
 }
 
-\references{Wan, Y., C. Sun, and D.L. Grebner. 2010. Analysis of import demand for wooden beds in the United States. Journal of Agricultural and Applied Economics 42(4):643-658.}
+\references{
+Berndt, E.R., and N.E. Savin. 1975. Estimation and hypothesis testing in singular equation systems with autoregressive disturbances. Econometrica 43(5/6):937-957.
+
+Wan, Y., C. Sun, and D.L. Grebner. 2010. Analysis of import demand for wooden beds in the United States. Journal of Agricultural and Applied Economics 42(4):643-658.
+}
+
 \author{Changyou Sun (\email{csun@cfr.msstate.edu})}
-\seealso{\code{\link{aiStaFit}}; \code{\link{aiDiag}}; \code{\link{aiElas}}; \code{summary.aiFit}.}
+\seealso{\code{\link{systemfitAR}}; \code{\link{aiStaFit}}; \code{\link{aiDiag}}; \code{\link{aiElas}}; \code{summary.aiFit}.}
 
 \examples{
 
@@ -52,6 +70,8 @@ rSta <- aiStaFit(y = daBed, share = sh, price = pr, shift = du3,
   expen = "rte", omit = "sRW", hom = TRUE, sym = TRUE)
 summary(rSta)
 
+# The following steps should work. It takes about 20 seconds.
+\dontrun{
 # 2.2 The final Hausman test and new data
 (dg <- daExp[, "dg"])
 rHau <- aiStaHau(x = rSta, instr = dg, choice = FALSE)
@@ -95,5 +115,6 @@ colnames(eEM) <- c("Country", "LR.expen", "LR.Marsh",
 (table.5 <- eEM[-c(15:16),])
 (table.6a <- es$hicks[-c(15:16), -9])
 (table.6b <- ed$hicks[-c(15:16), -9])
+}
 }
 \keyword{regression}

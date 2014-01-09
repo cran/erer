@@ -9,6 +9,7 @@ aiElas <- function(z, digits = 3, ...) {
   av <- colMeans(z$y[, e.share])
   av.sh <- av[c(e.share[-nO], e.share[nO])]  
  
+  # coefficient for the beta and gamma in the omitted equation
   bt.co <- bt.vc <- gm.co <- gm.vc <- 0
   for ( i in 1:(nS-1)) { 
     bt.co <- bt.co - cof[nE + nP*(i-1)]
@@ -19,6 +20,7 @@ aiElas <- function(z, digits = 3, ...) {
     }
   }
   
+  # ex = Expenditure elasticity, including that for omitted equation
   e.ex <- v.ex <- NULL
   for(i in 1:(nS-1)){
       e.ex[i] <- 1 + cof[nE + nP*(i-1)] / av.sh[i]
@@ -27,6 +29,7 @@ aiElas <- function(z, digits = 3, ...) {
   e.ex[nS] <- 1 + bt.co / av.sh[nS]
   v.ex[nS] <- bt.vc / (av.sh[nS]^2)
 
+  # Marshallian and Hicksian elasticiity: e = estimate, v = variance
   e.ma <- v.ma <- e.hi <- v.hi <-matrix(NA, nS, nS)
   for (i in 1:(nS-1)) {
     for (j in 1:nS) {
@@ -46,33 +49,36 @@ aiElas <- function(z, digits = 3, ...) {
       v.ma[nS, j] <- (vco[j*nP, j*nP] + bt.vc *(av.sh[j]^2)) / (av.sh[nS]^2)
       v.hi[nS, j] <- vco[j*nP, j*nP] / (av.sh[nS]^2)
   }
-  e.ma[nS, nS] <-  -1 + gm.co /av.sh[nS] - bt.co
+  e.ma[nS, nS] <-  -1 + gm.co /av.sh[nS] - bt.co    # omitted equation
   e.hi[nS, nS] <-  -1 + gm.co /av.sh[nS] + av.sh[nS]
   v.ma[nS, nS] <-  gm.vc / (av.sh[nS]^2) + bt.vc
   v.hi[nS, nS] <-  gm.vc / (av.sh[nS]^2)
 
+  # Expenditure: t-ratio, p value, all
   t.ex <- e.ex/sqrt(v.ex)
   t.ma <- e.ma/sqrt(v.ma)
   t.hi <- e.hi/sqrt(v.hi) 
   p.ex <- 2*( 1- pt(abs(t.ex),df) )
   p.ma <- 2*( 1- pt(abs(t.ma),df) )
   p.hi <- 2*( 1- pt(abs(t.hi),df) )    
-  ex <- data.frame(cbind(e.ex, sqrt(v.ex), t.ex, p.ex))
+  ex <- data.frame(cbind(e.ex, sqrt(v.ex), t.ex, p.ex)) # expenditure
   rownames(ex) <- names(av.sh)
-  expen <- bsTab(ex)
+  expen <- bsTab(ex, ...)
   colnames(expen) <- c("Elas.expen", "Estimate")
  
+ # Marshallian and Hicksian: t, p, all
   mars <- hick <- data.frame(matrix(NA, nrow=2*nS, ncol=nS))
   for (i in 1:nS) {  
     ma <- data.frame(cbind(e.ma[,i], sqrt(v.ma)[,i], t.ma[,i], p.ma[,i]))
     hi <- data.frame(cbind(e.hi[,i], sqrt(v.hi)[,i], t.hi[,i], p.hi[,i])) 
     rownames(ma) <- rownames(hi) <- names(av.sh)       
-    mars[, i] <- bsTab(ma)[,2]
-    hick[, i] <- bsTab(hi)[,2]     
+    mars[, i] <- bsTab(ma, ...)[,2]
+    hick[, i] <- bsTab(hi, ...)[,2]     
   }
   colnames(mars) <- colnames(hick) <- names(av.sh)
-  marsh <- cbind(Elas.Marsh = bsTab(ma)[1], mars)
-  hicks <- cbind(Elas.Hicks = bsTab(hi)[1], hick)    
-  result <- list(name = names(av.sh), expen=expen, marsh = marsh, hicks = hicks)
+  marsh <- cbind(Elas.Marsh = bsTab(ma, ...)[1], mars)
+  hicks <- cbind(Elas.Hicks = bsTab(hi, ...)[1], hick)    
+  
+  result <- listn(name = names(av.sh), expen, marsh, hicks)
   return(result)
 }  
