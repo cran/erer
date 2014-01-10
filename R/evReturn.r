@@ -56,10 +56,22 @@ evReturn <- function(y, firm, event.date, y.date = "date",
   rownames(cumu) <- 1:nrow(cumu)
   abc <- data.frame(name=colnames(cum)[-1], cumu, stringsAsFactors = FALSE)
 
-  result <- list(y=y, y.date=y.date, firm=firm, N=N, index=index, 
-    event.date=event.date, event.win=event.win, event.width=E,
-    est.win=est.win, daEst=daEst, daEve=daEve, ra=ra, digits=digits,
-    reg=reg, abr=abr, abc=abc, call=sys.call())
+  result <- listn(y, y.date, firm, N, index, event.date, event.win, 
+    event.width=E, est.win, daEst, daEve, ra, digits, reg, abr, abc,
+    call=sys.call())
   class(result) <- "evReturn"
   return(result)
-}  
+}
+
+# Two methods for 'evReturn'
+print.evReturn <- function(x, ...){  
+  cat("\n=== Regression coefficients by firm =========\n"); print(x$reg)
+  cat("\n=== Abnormal returns by date ================\n"); print(x$abr)
+  cat("\n=== Average abnormal returns across firms ===\n"); print(x$abc)       
+} 
+
+plot.evReturn <- function(x, ...) {
+  qplot(x = x$abr$day, y = x$abr$HNt, geom = "path",
+    xlab = "Event Day",
+    ylab = "Average Cumulative Abnormal Returns (%)")
+}

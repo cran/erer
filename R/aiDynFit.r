@@ -1,19 +1,23 @@
-aiDynFit <- function(w, dum.dif = FALSE, ...)
+aiDynFit <- function(w, dum.dif = FALSE, AR1 = FALSE, 
+  rho.sel = c("all", "mean"), ...)
 {
     if (!inherits(w, "aiStaFit")) {
       stop("Please provide an object from 'aiStaFit'.\n")}
     y <- w$y
-    hShare <- bsLag(h = diff(y[, w$share]), lag = 1, prefix = "diff.")   
-    resid <- ts(residuals(w$est), start = start(y), frequency = tsp(y)[3])
-    colnames(resid) <- paste("resi.", w$share[-w$nOmit], sep="")
-    hResid <- bsLag(h = resid, lag = 1, include.orig = FALSE)    
+    # lose two observations by diff and lag
+    hShare <- bsLag(h = diff(y[, w$share]), lag = 1, prefix = "diff.") 
     hExpen <- diff(y[, w$expen])
     hPrice <- diff(y[, w$price])
     colnames(hPrice) <- paste("diff.", colnames(hPrice), sep="")
-          
+    
+    # residuals from static model loses one obs if it has AR correction
+    if (w$AR1) {begin <- start(y) + c(0,1)} else {begin <- start(y)}   
+    resid <- ts(residuals(w$est), start = begin, frequency = tsp(y)[3])
+    colnames(resid) <- paste("resi.", w$share[-w$nOmit], sep="")
+    hResid <- bsLag(h = resid, lag = 1, include.orig = FALSE)   
+              
     hShift <- y[, w$shift]
-    if (!is.null(w$shift)) {shift <- w$shift
-    } else {shift <- NULL}        
+    if (!is.null(w$shift)) {shift <- w$shift} else {shift <- NULL}
     if (dum.dif) {
        if (!is.null(w$shift)) {
            hShift <- diff(hShift)
@@ -32,8 +36,8 @@ aiDynFit <- function(w, dum.dif = FALSE, ...)
     vaa <- list(hShare, hResid, hExpen, hPrice, hShift)
     sta <- c(tsp(hShare)[1], tsp(hResid)[1], tsp(hExpen)[1],
              tsp(hPrice)[1], tsp(hShift)[1])      
-    loc <- which(sta == max(sta))        
-    beg <- start(vaa[[loc]])
+    loc <- which(sta == max(sta))  # there may be multiple matches      
+    beg <- start(vaa[[loc[1]]])
     daDyn <- window(comb, start = beg, end = end(y), frequency = tsp(y)[3])
 
     share.d  <- paste("diff.", w$share, ".t_0", sep="")
@@ -77,13 +81,46 @@ aiDynFit <- function(w, dum.dif = FALSE, ...)
            name.y = share.d[-nOmit][i], 
            name.x = c(share.dl[-nOmit][i], resid.d[i], shift, expen.d, price.d))
     }
-    est <- systemfit(sa, method = "SUR", data = daDyn, 
-        restrict.matrix = aa, restrict.rhs = bb)    
-    result <- list(w=w, y=w$y, dum.dif=dum.dif, daDyn=daDyn,
+    est <- systemfitAR(formula = sa, data = data.frame(daDyn), method="SUR",
+       restrict.matrix = aa, restrict.rhs = bb, AR1 = AR1, rho.sel = rho.sel,
+       model="dynamic")
+       
+    ## Omitted equation: coefficients
+#    co <- matrix(0, nrow = nShare - 1, ncol = nParam)
+#    for (i in 1:(nShare - 1)) {
+#      co[i, ] <- coef(est)[((i-1) * nParam + 1):(i * nParam)]
+#    }
+#    co.omit <- rep(0, nParam) - colSums(co) # diff in dynamic model so all sum 0
+#   
+#    # Omitted equation: variance for gamma_last and exoge variables
+#    cof <- coef(est);  vco <- vcov(est)
+#    gama.vc <- 0
+#    for (i in 1:(nShare-1)) { 
+#      for (j in 1:(nShare-1)) {
+#        gama.vc <- gama.vc + vco[nParam*i, nParam*j]
+#      }
+#    }
+#    ex.vc <- rep(0, nExoge)
+#    for(k in 1:nExoge) {
+#      for (i in 1:(nShare-1)) { 
+#        for (j in 1:(nShare-1)) {
+#          ex.vc[k] <- ex.vc[k] + vco[nParam*(i-1) + k, nParam*(j-1) + k]
+#        }
+#      }
+#    }
+#    
+#    # Omitted equation: combined
+#    df <- df.residual(est)
+#    c.ex <- co.omit[c(1:nExoge, nParam)]
+#    e.ex <- sqrt(c(ex.vc, gama.vc))
+#    t.ex <- c.ex / e.ex
+#    p.ex <- 2 * ( 1- pt(abs(t.ex), df) )
+#    ex <- data.frame(cbind(c.ex, e.ex, t.ex, p.ex))
+    
+    result <- listn(w, y=w$y, dum.dif, daDyn,
         share=share.d, price=price.d, expen=expen.d, 
-        shift=shift, omit=omit, nOmit=nOmit, hom=w$hom, sym=w$sym,
-        nShare=nShare, nExoge=nExoge, nParam=nParam, nTotal=nTotal,
-        formula=sa, res.matrix=aa, res.rhs=bb, est=est)
+        shift, omit, nOmit, hom=w$hom, sym=w$sym, nShare, nExoge, 
+        nParam, nTotal, formula=sa, res.matrix=aa, res.rhs=bb, est=est)
     class(result) <- c("aiDynFit", "aiFit")
     return(result)
 }

@@ -27,7 +27,9 @@ evRisk <- function(x, m = 50, r.free = "tbill", ...) {
     reg[i,"event.date"] <- x$event.date[i]
     reg[i, 4:18] <- c(coe[1, -1], coe[2, -1], coe[3, -1])
   }
-  result <- list(x=x, daEst=daEst, rb=rb, reg=reg)
+  result <- listn(x, daEst, rb, reg)
   class(result) <- "evRisk"
   return(result)
 }  
+
+print.evRisk <- function(x, ...) {print(x$reg)}

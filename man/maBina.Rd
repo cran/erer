@@ -1,5 +1,6 @@
 \name{maBina}
 \alias{maBina}
+\alias{print.maBina}
 \title{Marginal Effect for Binary Probit and Logit Model}
 \description{This function calculates marginal effects for a binary probit or logit model and their standard errors.}
 
@@ -19,6 +20,13 @@
   \item{f.xb}{scale factor of marginal effects, calculated as the density function evaluated at the means of the variables when \code{x.mean = TRUE} is specified or the average density value for all individual observations when \code{x.mean = FALSE} is specified;}
   \item{w}{a binary probit or logit model object estimated from \code{glm()};}
   \item{out}{a data frame object of marginal effects, t-value, and p-value.}
+}
+
+\section{Methods}{
+  One method is defined as follows:
+  \describe{
+    \item{\code{print}:}{print the key output of marginal effects.}
+  }
 }
 
 \references{Greene, W.H. 2003. Econometric Analysis (5th ed.). Prentice Hall, New York. 1026 P.}

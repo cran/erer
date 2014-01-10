@@ -2,6 +2,7 @@
 \alias{aiElas}
 \title{Computing Elasticity for Static or Dynamic AIDS Models}
 \description{Calculate expenditure elasticity, Marshalllian price elasticity, Hicksian price elasticity, and their variances for static or dynamic AIDS Models.}
+
 \usage{aiElas(z, digits = 3, ...)}
 \arguments{
   \item{z }{ an object of class \code{aiFit} from the function of \code{aiStaFit} or \code{aiDynFit}.}

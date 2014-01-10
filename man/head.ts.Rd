@@ -15,7 +15,9 @@
 }
 \details{ The data can be an univariate or multivariate time series data.}
 \value{ An object like x but generally smaller.}
+
 \author{Changyou Sun (\email{csun@cfr.msstate.edu})}
+
 \examples{
 h1 <- ts(data=cbind(1:24), start=c(2001, 1), frequency=12)
 h2 <- ts(data=cbind(1:24, 25:48), start=c(2001, 1), frequency=12)

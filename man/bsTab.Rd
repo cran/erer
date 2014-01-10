@@ -20,6 +20,7 @@
   \item{digits }{ digits for outputs; the default values are 3, 3, 3, and 2 for estimate, error, t value, and p value, correspondingly. A single value like 4 can be supplied and it will be recycled for all of them.}
   \item{\dots }{ additional arguments to be passed.}
 }
+
 \details{Format statistics from regressions into tables that are often reported in economic journals. The column of 'Variable' in the outuput is the row names of the input data so the raw data should contain meaningful rownames. Besides the variable name column, the maximum number of output is five columns: estimate, error, t ratio, p value, and significance. \code{wrap.TE} and \code{add.sig} are only valid for column widths of 1 and 2.}
 \value{A dataframe of statistical results.}
 \author{Changyou Sun (\email{csun@cfr.msstate.edu})}

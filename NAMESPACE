@@ -6,5 +6,6 @@ import(
   systemfit,
   lmtest,
   tseries,
-  ggplot2
+  ggplot2,
+  urca
 )

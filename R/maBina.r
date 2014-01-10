@@ -1,5 +1,4 @@
-maBina <- function(w, x.mean = TRUE, rev.dum = TRUE, 
-  digits = 3, ...)
+maBina <- function(w, x.mean = TRUE, rev.dum = TRUE, digits = 3, ...)
 {
   if (!inherits(w, "glm")) {stop("Please provide an object from 'glm()'.\n")}
   link <- w$family$link
@@ -61,7 +60,9 @@ maBina <- function(w, x.mean = TRUE, rev.dum = TRUE,
   out$t.value <- out$effect / out$error
   out$p.value <- 2*(1- pt(abs(out[, 3]), w$df.residual))
   out <- round(out, digits=digits)  
-  result <- list(link=link, f.xb=f.xb, w=w, out=out)
+  result <- listn(link, f.xb, w, out)
   class(result) <- "maBina"
   return(result)
 }
+
+print.maBina <- function(x, ...) {print(x$out)}

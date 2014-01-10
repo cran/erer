@@ -18,7 +18,6 @@ bsStat <- function(y, two = NULL, digits = c(2, 2),
   fstat <- ff[, 1:6]
   corr <- ff[, -c(2:6)]
 
-
   if (is.null(two)) {
       if (ncol(y) < 11) { two <- FALSE } else { two <- TRUE }
   }

@@ -2,6 +2,7 @@
 \alias{bsFormu}
 \title{Generating Formula for Models}
 \description{Generate a single formula for models like \code{lm} or a list of formula for models like \code{systemfit}.}
+
 \usage{bsFormu(name.y, name.x, intercept = TRUE, ...)}
 \arguments{
   \item{name.y }{ a character vector of variables names for dependent variables; when the length is more than one, there will a list of formula generated for each variable in the name.}
