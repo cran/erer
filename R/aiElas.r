@@ -1,4 +1,4 @@
-aiElas <- function(z, digits = 3, ...) {
+aiElas <- function(z, ...) {
   if (!inherits(z, "aiFit")) {
       stop("\nPlease provide an object from 'aiStaFit' or 'aiDynFit'.\n") }
   est <- z$est;      

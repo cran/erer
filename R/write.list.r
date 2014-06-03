@@ -19,11 +19,12 @@ write.list <- function(z, file, t.name = NULL, row.names = FALSE, ...) {
   # write.table for each list
   options(warn = - 1) # suppressWarnings    
   for (k in 1:length(z)) {
-    dat <- data.frame(z[[k]])
+    dat <- as.data.frame(z[[k]])
     if (row.names) {
-      h2 <- data.frame(Result = add.name[k], row.name = rownames(dat), dat)
+      h2 <- as.data.frame(cbind(Result = add.name[k], 
+        row.name = rownames(dat), dat))
     } else {
-      h2 <- data.frame(Result = add.name[k], dat)    
+      h2 <- as.data.frame(cbind(Result = add.name[k], dat))    
     }
     h3 <- rbind(apply(h2, 2, as.character), "") # add a blank row to each table
     ap <- ifelse(k==1, FALSE, TRUE)

@@ -21,7 +21,7 @@
   \item{season }{ adding seasonality variables or not; if yes, either monthly dummy or quarterly dummy; this is prepared mainly for monthly data.}      
   \item{\dots }{ additional arguments to be passed.}
 }
-\details{This transforms raw import data into a format needed for a static AIDS model. This separation of data prepraration from model fitting allows greater flexibility in using \code{aiStaFit} in estimating a static AIDS model. In addition, when the raw data contain zero, a small number is substituted to avoid NA when the price variable (value/quantity) is calculated.}
+\details{This transforms raw import data into a format needed for a static AIDS model. This separation of data prepraration from model fitting allows greater flexibility in using \code{aiStaFit} in estimating a static AIDS model. In addition, when the raw data contain zero, a small number is substituted to avoid NA when the price variable (value/quantity) is calculated. The values for the residual supplier will change when the \code{label} is different.}
 
 \value{
 Return a list object with two components:
@@ -59,7 +59,7 @@ data(daBedRaw)
 imp8 <- aiData(x = daBedRaw,
   label = c("CN", "VN", "ID", "MY", "CA", "BR", "IT"),
   label.tot = "WD", prefix.value = "v", prefix.quant = "q",
-  start = c(2001, 1), end = c(2008, 12), frequency = 12)
+  start = c(2001, 1), end = c(2008, 12))
 imp4 <- update(imp8, label = c("CN", "VN", "ID"))
 imp5 <- update(imp4, label = c("CN", "VN", "ID", "MY"))
 imp8; imp4; imp5

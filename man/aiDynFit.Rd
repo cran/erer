@@ -57,7 +57,7 @@ Wan, Y., C. Sun, and D.L. Grebner. 2010. Analysis of import demand for wooden be
 
 \examples{
 
-# --- Step 1: Read data 
+# --- Step 1: Read data
 data(daExp, daBedRaw, daBed)
 
 # --- Step 2: Hausman Test 

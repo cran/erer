@@ -1,11 +1,9 @@
-# Export all names
+# Export all names 
+# S3method("lrtest", "systemfit") # S3method(print, foo) for my method export
 exportPattern(".")
 
 # Import all packages listed as Imports or Depends
-import(
-  systemfit,
-  lmtest,
-  tseries,
-  ggplot2,
-  urca
-)
+import("systemfit", "lmtest")
+importFrom("tseries", "jarque.bera.test")
+importFrom("urca", "ur.df")
+importFrom("ggplot2", "qplot")

@@ -3,11 +3,10 @@
 \title{Computing Elasticity for Static or Dynamic AIDS Models}
 \description{Calculate expenditure elasticity, Marshalllian price elasticity, Hicksian price elasticity, and their variances for static or dynamic AIDS Models.}
 
-\usage{aiElas(z, digits = 3, ...)}
+\usage{aiElas(z, ...)}
 \arguments{
   \item{z }{ an object of class \code{aiFit} from the function of \code{aiStaFit} or \code{aiDynFit}.}
-  \item{digits }{ number of digits used in rounding outputs.}
-  \item{\dots }{ additional arguments to be passed.}
+  \item{\dots }{ additional arguments to be passed to \code{bsTab}, e.g., digits = 3.}
 }
 \details{Calculate expenditure elasticity, Marshalllian price elasticity, and Hicksian price elasticity for static or dynamic AIDS Models. The related variance, t-ratio, p-value, and significance are also reported.}
 
