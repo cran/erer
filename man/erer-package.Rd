@@ -4,14 +4,16 @@
 \docType{package}
 \title{Empirical Research in Economics with R }
 \description{
-This package contains functions and datasets for the book of 'Empirical Research in Economics: Growing up with R' by Dr. Changyou Sun. These functions can calculate marginal effects for a binary probit or logit model; calculate marginal effects for an ordered probit or ordered logit model; estimate static and dynamic Almost Ideal Demand System (AIDS) models; and conduct event analysis.
+Functions, datasets, and sample codes related to the book of 'Empirical Research in Economics: Growing up with R' by Dr. Changyou Sun are included. The book is still under preparation as of August 2014. Marginal effects for binary or ordered choice models can be calculated. Static and dynamic Almost Ideal Demand System (AIDS) models can be estimated. A typical event analysis in finance can be conducted with several functions included.
+
+There are over 80 sample programs for the book. They are included in the package folder on your local drive, e.g., c:/.../R-3.1.1/library/erer/doc/ererBookRcode. Alternatively, download the tar.gz version from the CRAN site to view them.
 }
 \details{
 \tabular{ll}{
 Package:  \tab erer \cr
 Type:     \tab Package \cr
-Version:  \tab 2.1 \cr
-Date:     \tab 2010-11-15 (first built); 2014-6-3 (last) \cr
+Version:  \tab 2.2 \cr
+Date:     \tab 2010-11-15 (first built); 2014-8-10 (last) \cr
 Depends:  \tab R (>= 3.0.0), lmtest \cr
 Imports:  \tab systemfit, tseries, urca, ggplot2 \cr
 Suggests: \tab MASS \cr
