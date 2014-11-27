@@ -12,7 +12,7 @@
 }
 \details{ This function can generate a single formula for simple model like \code{lm} or a list of formula for systems (\code{systemfit}. Note that the right-hand side variables are the same for each dependent variable. If different, a \code{for} loop can be added by users to address that, as demonstrated by the example below.}
 \value{a single formula object or a list of formula objects.}
-\author{Changyou Sun (\email{csun@cfr.msstate.edu})}
+\author{Changyou Sun (\email{cs258@.msstate.edu})}
 
 \examples{
 

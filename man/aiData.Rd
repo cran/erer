@@ -50,29 +50,27 @@ Wan, Y., C. Sun, and D.L. Grebner. 2010. Analysis of import demand for wooden be
 }
 
 
-\author{Changyou Sun (\email{csun@cfr.msstate.edu})}
+\author{Changyou Sun (\email{cs258@.msstate.edu})}
 \seealso{\code{\link{aiStaFit}}; \code{\link{daBedRaw}}; \code{\link{daBed}}.}
 
 \examples{
 
 data(daBedRaw)
+dumm <- list(dum1 = c(2003, 10, 2003, 10), dum2 = c(2004, 7, 2004, 7),
+  dum3 = c(2005, 1, 2005, 1))
 imp8 <- aiData(x = daBedRaw,
   label = c("CN", "VN", "ID", "MY", "CA", "BR", "IT"),
   label.tot = "WD", prefix.value = "v", prefix.quant = "q",
-  start = c(2001, 1), end = c(2008, 12))
+  start = c(2001, 1), end = c(2008, 12), dummy = dumm)
 imp4 <- update(imp8, label = c("CN", "VN", "ID"))
 imp5 <- update(imp4, label = c("CN", "VN", "ID", "MY"))
 imp8; imp4; imp5
-dat8 <- imp8$out
-
-dum  <- ts(0, start = start(dat8), end = end(dat8), frequency = 12)
-dum1 <- replace(dum, time(dum) == 2003+(10-1)/12, 1)
-dum2 <- replace(dum, time(dum) == 2004+(7 -1)/12, 1)
-dum3 <- replace(dum, time(dum) == 2005+(1 -1)/12, 1)
-daTest <- ts.union(dat8, dum1, dum2, dum3)
-colnames(daTest) <- c(colnames(dat8), "dum1", "dum2", "dum3")
+daTest <- imp8$out
+colnames(daTest)[18:20] <- c("dum1", "dum2", "dum3")
+head(daTest)
 
 data(daBed)
+head(daTest); head(daBed)
 identical(daBed, daTest)
 }
 \keyword{manip}

@@ -42,8 +42,7 @@ ocME <- function(w, x.mean = TRUE, rev.dum = TRUE, digits = 3)
     d1 <-      dfun(u1) * (diag(1,K,K) - s1 * (b.est %*% t(x.bar)))
     d2 <- -1 * dfun(u2) * (diag(1,K,K) - s2 * (b.est %*% t(x.bar)))   
     q1 <-      dfun(u1) * s1 * b.est 
-    q2 <- -1 * dfun(u2) * s2 * b.est  
-    
+    q2 <- -1 * dfun(u2) * s2 * b.est     
     dr <- cbind(d1 + d2, q1, q2)
     V <- V5[c(1:K, K+j, K+j+1), c(1:K, K+j, K+j+1)]
     cova <- dr %*% V %*% t(dr)    
@@ -55,20 +54,16 @@ ocME <- function(w, x.mean = TRUE, rev.dum = TRUE, digits = 3)
   # 4. Revise ME and error for dummy variable
   if (rev.dum) {
     for (k in 1:K) {
-      if (identical(unique(x[, k]), c(0, 1))) {
+      if (identical(sort(unique(x[, k])), c(0, 1))) {
         for (j in 1:J) { 
           x.d1 <- x.bar; x.d1[k, 1] <- 1 
           x.d0 <- x.bar; x.d0[k, 1] <- 0     
-          ua1 <- z[j  ] - t(x.d1) %*% b.est
-          ub1 <- z[j+1] - t(x.d1) %*% b.est        
-          ua0 <- z[j  ] - t(x.d0) %*% b.est
-          ub0 <- z[j+1] - t(x.d0) %*% b.est          
-          me[k, j] <- pfun(ub1) - pfun(ua1) - (pfun(ub0) - pfun(ua0)) 
-           
+          ua1 <-z[j] - t(x.d1) %*% b.est; ub1 <- z[j+1] - t(x.d1) %*% b.est
+          ua0 <-z[j] - t(x.d0) %*% b.est; ub0 <- z[j+1] - t(x.d0) %*% b.est
+          me[k, j] <- pfun(ub1) - pfun(ua1) - (pfun(ub0) - pfun(ua0))           
           d1 <- (dfun(ua1) - dfun(ub1)) %*% t(x.d1) - 
                 (dfun(ua0) - dfun(ub0)) %*% t(x.d0)
-          q1 <- -dfun(ua1) + dfun(ua0)
-          q2 <-  dfun(ub1) - dfun(ub0)
+          q1 <- -dfun(ua1) + dfun(ua0); q2 <-  dfun(ub1) - dfun(ub0)
           dr <- cbind(d1, q1, q2)                         
           V <- V5[c(1:K, K+j, K+j+1), c(1:K, K+j, K+j+1)]
           se[k, j] <- sqrt(c(dr %*% V %*% t(dr)))
@@ -86,8 +81,7 @@ ocME <- function(w, x.mean = TRUE, rev.dum = TRUE, digits = 3)
       t.value = t.value[, j], p.value = p.value[, j]), digits)
   }
   out[[J+1]] <- round(me, digits)
-  names(out) <- paste("ME", c(lev, "all"), sep = ".")
-  
+  names(out) <- paste("ME", c(lev, "all"), sep = ".")  
   result <- listn(w, out) 
   class(result) <- "ocME"; return(result)
 }

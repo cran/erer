@@ -1,16 +1,16 @@
 Package: erer
 Title: Empirical Research in Economics with R
-Version: 2.2
-Date: 2010-11-15 (first built); 2014-8-10 (last)
-Author: Changyou Sun <csun@cfr.msstate.edu>
-Maintainer: Changyou Sun <csun@cfr.msstate.edu>
+Version: 2.3
+Date: 2010-11-15 (first built); 2014-11-28 (last)
+Author: Changyou Sun <cs258@msstate.edu>
+Maintainer: Changyou Sun <cs258@msstate.edu>
 Depends: R (>= 3.0.0), lmtest
 Imports: systemfit, tseries, urca, ggplot2
 Suggests: MASS
-Description: Functions, datasets, and sample codes related to the book of 'Empirical Research in Economics: Growing up with R' by Dr. Changyou Sun are included. The book is still under preparation as of August 2014. Marginal effects for binary or ordered choice models can be calculated. Static and dynamic Almost Ideal Demand System (AIDS) models can be estimated. A typical event analysis in finance can be conducted with several functions included.
+Description: Functions, datasets, and sample codes related to the book of 'Empirical Research in Economics: Growing up with R' by Dr. Changyou Sun are included. The book is still under preparation as of 2014. Marginal effects for binary or ordered choice models can be calculated. Static and dynamic Almost Ideal Demand System (AIDS) models can be estimated. A typical event analysis in finance can be conducted with several functions included.
 License: GPL (>= 2)
 LazyLoad: yes
-Packaged: 2014-08-11 16:29:17 UTC; csun
+Packaged: 2014-11-27 15:35:36 UTC; csun
 NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2014-08-11 18:53:26
+Date/Publication: 2014-11-27 18:30:12

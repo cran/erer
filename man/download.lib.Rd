@@ -27,7 +27,7 @@ This function is mainly used to download the source version of one or multiple p
 Return the packge names.
 }
 
-\author{Changyou Sun (\email{csun@cfr.msstate.edu})}
+\author{Changyou Sun (\email{cs258@.msstate.edu})}
 
 \seealso{\code{\link{download.packages}}; \code{\link{download.file}}.}
 

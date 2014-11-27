@@ -12,30 +12,30 @@ ocProb <- function(w, nam.c, n = 100, digits = 3)
   x.name <- attr(x = w$terms, which = "term.labels")
   x2 <- w$model[, x.name]
   if (identical(sort(unique(x2[, nam.c])), c(0, 1)) ||
-    inherits(x2[, nam.c], "factor")) {
+    inherits(x2[, nam.c], what = "factor")) {
     stop("nam.c must be a continuous variable.")
   }
    
   ww <- paste("~ 1", paste("+", x.name, collapse = " "), collapse = " ")
   x <- model.matrix(as.formula(ww), data = x2)[, -1]
   b.est <- as.matrix(coef(w)); K <- nrow(b.est)
-  z <- c(-10^6, w$zeta, 10^6) # expand it with two extreme thresholds
-  z2 <- matrix(z, nrow = n, ncol = length(z), byrow = TRUE)
+  z <- c(-10^6, w$zeta, 10^6)  # expand it with two extreme thresholds
+  z2 <- matrix(data = z, nrow = n, ncol = length(z), byrow = TRUE)
 
   pfun <- switch(w$method, probit = pnorm, logistic = plogis)
   dfun <- switch(w$method, probit = dnorm, logistic = dlogis)
-  V2 <- vcov(w) # increase covarance matrix by 2 fixed thresholds
+  V2 <- vcov(w)  # increase covarance matrix by 2 fixed thresholds
   V3 <- rbind(cbind(V2, 0, 0), 0, 0)
   ind <- c(1:K, nrow(V3)-1, (K+1):(K+J-1), nrow(V3))
-  V4 <- V3[ind,]; V5 <- V4[, ind]
+  V4 <- V3[ind, ]; V5 <- V4[, ind]
         
   # 3. Construct x matrix and compute xb  
-  mm <- matrix(colMeans(x), ncol = ncol(x), nrow = n, byrow = TRUE)
+  mm <- matrix(data = colMeans(x), ncol = ncol(x), nrow = n, byrow = TRUE)
   colnames(mm) <- colnames(x)
   ran <- range(x[, nam.c])
   mm[, nam.c] <- seq(from = ran[1], to = ran[2], length.out = n) 
   xb <- mm %*% b.est
-  xb2 <- matrix(xb, nrow = n, ncol = J, byrow = FALSE) # J copy
+  xb2 <- matrix(data = xb, nrow = n, ncol = J, byrow = FALSE)  # J copy
 
   # 4. Compute probability by category; vectorized on z2 and xb2
   pp <- pfun(z2[, 2:(J+1)] - xb2) - pfun(z2[, 1:J] - xb2)  
@@ -43,7 +43,7 @@ ocProb <- function(w, nam.c, n = 100, digits = 3)
   colnames(trend) <- c(nam.c, paste("p", lev, sep="."))
   
   # 5. Compute the standard errors
-  se <- matrix(0, nrow = n, ncol = J)  
+  se <- matrix(data = 0, nrow = n, ncol = J)
   for (i in 1:J) {
     z1 <- z[i] - xb; z2 <- z[i+1] - xb
     d1 <- diag(c(dfun(z1) - dfun(z2)), n, n) %*% mm   
@@ -64,7 +64,7 @@ ocProb <- function(w, nam.c, n = 100, digits = 3)
     out[[i]] <- round(cbind(predicted_prob = pp[, i], error = se[, i], 
       t.value = t.value[, i], p.value = p.value[, i]), digits)
   }
-  out[[J+1]] <- round(trend, digits)
+  out[[J+1]] <- round(x = trend, digits = digits)
   names(out) <- paste("predicted_prob", c(lev, "all"), sep = ".")
   result <- listn(w, nam.c, method=w$method, mean.x=colMeans(x), out, lev)
   class(result) <- "ocProb"; return(result)

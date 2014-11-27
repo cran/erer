@@ -10,7 +10,7 @@
 
 \value{Return a list object with names.}
 
-\author{Changyou Sun (\email{csun@cfr.msstate.edu})}
+\author{Changyou Sun (\email{cs258@.msstate.edu})}
 
 \examples{
 

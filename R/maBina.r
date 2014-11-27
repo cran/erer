@@ -29,7 +29,7 @@ maBina <- function(w, x.mean = TRUE, rev.dum = TRUE, digits = 3,
   # 4. Revise ME and error for dummy variable
   if (rev.dum) {
     for (i in 1:ncol(x)) {
-      if (identical(unique(x[,i]), c(0, 1))) {
+      if (identical(sort(unique(x[,i])), c(0, 1))) {
         x.d1 <- x.bar; x.d1[i, 1] <- 1
         x.d0 <- x.bar; x.d0[i, 1] <- 0
         me[i] <- pfun(t(x.d1) %*% b.est) -  

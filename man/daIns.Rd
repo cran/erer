@@ -24,7 +24,8 @@
 \format{A cross sectional data with 1653 observations and 14 variables.}
 \details{The data set is from a telephone survey conducted in 2005 in Mississippi.}
 \source{
-Sun, C., S. Pokharel, W.D. Jones, S.C. Grado, and D.L. Grebner. 2007. Extent of recreational incidents and determinants of liability insurance coverage for hunters and anglers in Mississippi. Southern Journal of Applied Forestry 31(3):151-158.}
+Sun, C., S. Pokharel, W.D. Jones, S.C. Grado, and D.L. Grebner. 2007. Extent of recreational incidents and determinants of liability insurance coverage for hunters and anglers in Mississippi. Southern Journal of Applied Forestry 31(3):151-158.
+}
 
 \seealso{\code{\link{daInsNam}}}
 

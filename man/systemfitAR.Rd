@@ -81,7 +81,7 @@ systemfitAR(formula, method = "OLS", inst = NULL, data = list(),
   Berndt, E.R., and N.E. Savin. 1975. Estimation and hypothesis testing in singular equation systems with autoregressive disturbances. Econometrica 43(5/6):937-957.
 }
 
-\author{Changyou Sun (\email{csun@cfr.msstate.edu})}
+\author{Changyou Sun (\email{cs258@.msstate.edu})}
 
 \seealso{\code{\link{lm}}; \code{\link{aiStaFit}}; \code{\link{systemfit}}}
 
