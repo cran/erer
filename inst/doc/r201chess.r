@@ -1,5 +1,6 @@
 # A. Window device for a chess board
-win.graph(width = 3, height = 3); bringToTop(stay = TRUE)
+win.graph(width = 3, height = 3)
+bringToTop(stay = TRUE)
 par(mai = c(0.1, 0.1, 0.1, 0.1))
 
 # B. Draw cells with different colors
@@ -20,5 +21,6 @@ points(x = c(5.5, 7.5), y = c(4.5, 3.5), pch = 21, cex = 3, bg = "white")
 out <- recordPlot()
 
 # D. Save a pdf copy
-pdf(file = "C:/aErer/fig_chess.pdf", width = 3, height = 3)
+pdf(file = "C:/aErer/fig_chess.pdf", width = 3, height = 3, 
+  useDingbats = FALSE)
 replayPlot(out); dev.off()

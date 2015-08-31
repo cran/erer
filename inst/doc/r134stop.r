@@ -29,5 +29,5 @@ options(error = recover)
 
 options(warn = -1)  # warnings ignored
 options(warn = 0)   # default; warnings stored
-options(warn = 1)   # warnings are printed
+options(warn = 1)   # warnings printed
 options(warn = 2)   # Warnings turned into errors

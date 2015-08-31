@@ -48,7 +48,7 @@
 
 \details{Under the Harmonized Tariff Schedule (HTS) system, the commodity of wooden beds is classified as HTS 9403.50.9040. The monthly cost-insurance-freight values in dollar and quantities in piece are reported by country from U.S. ITC (2010).}
 
-\source{U.S. ITC, 2010. Interactive tariff and trade data web. \url{http://dataweb.usitc.gov} (Assecced on March 1, 2010).}
+\source{U.S. ITC, 2010. Interactive tariff and trade data web. US International Trade Commission (Assecced on March 1, 2010).}
 
 \references{Wan, Y., C. Sun, and D.L. Grebner. 2010. Analysis of import demand for wooden beds in the United States. Journal of Agricultural and Applied Economics 42(4):643-658.}
 

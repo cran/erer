@@ -4,15 +4,14 @@
 \title{Marginal Effect for Ordered Choice Model}
 \description{This function calculates marginal effects for an ordered chioce model and their standard errors. Either an ordered probit or logit model can be accommodated.}
 
-\usage{ocME(w, x.mean = TRUE, rev.dum = TRUE, digits = 3)}
+\usage{ocME(w, rev.dum = TRUE, digits = 3)}
   
 \arguments{
   \item{w}{ an ordered probit or logit model object estimated by \code{polr} from the MASS library.}
-  \item{x.mean}{ a logical value (default of TRUE) of whether to calculate marginal effects at the means of independent variables. If FALSE, marginal effects are calculated for each observation and then averaged.}
   \item{rev.dum}{ a logical value (default of TRUE) of whether to revise the estimates and standard erros for binary independant variables. If FALSE, derivatives are taken on binary independant variables as continuous variables.}
   \item{digits}{ number of digits for output.}
 }
-\details{Marginal effects from an ordered probit or logit model is calculated. The two choices are the method of averaging effects and revising estimates for dummy variables. Marginal effects can be calculated at the mean of the independent variables (i.e., \code{x.mean = TRUE}), or as the average of individual marginal effects at each observation (i.e., \code{x.mean = FALSE}). \code{rev.dum = TRUE} allows marginal effects for dummy variables are calculated differently, instead of treating them as continuous variables. The standard errors are computed by delta method. The software of LIMDEP is used to compare and benchmark the results.
+\details{Marginal effects from an ordered probit or logit model is calculated. Marginal effects are calculated at the mean of the independent variables. \code{rev.dum = TRUE} allows marginal effects for dummy variables are calculated differently, instead of treating them as continuous variables. The standard errors are computed by delta method. The software of LIMDEP is used to compare and benchmark the results.
 }
 
 \value{Return a list object of class "ocME" with the following components:

@@ -1,4 +1,4 @@
-ocME <- function(w, x.mean = TRUE, rev.dum = TRUE, digits = 3)
+ocME <- function(w, rev.dum = TRUE, digits = 3)
 {
   # 1. Check inputs
   if (!inherits(w, "polr")) {

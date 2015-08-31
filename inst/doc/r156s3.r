@@ -41,17 +41,22 @@ summary.scoreNum <- function(object, ...) {
 }
 
 # C. Test
-raw <- data.frame(Student = I(c("Smith, Bob", "Green, Joe", "Hue, Lisa")),
-  Exam.A = c(85, 55, 90), Exam.B = c(82, 49, 97))
-agg <- score(y = raw, sort.by = "Letter", decreasing = FALSE)
 args(score); formals(score); body(score)
-raw; names(agg) 
-agg; summary(agg, digits = 1)
 methods(class = "score"); methods(class = "scoreNum")
 methods(generic.function = print)
-print.default; print.acf; getAnywhere(print.acf); stats:::print.acf
+print.default; getAnywhere(print.acf); stats:::print.acf
+print.acf  # Error: object 'print.acf' not found
+
+raw <- data.frame(Student = I(c("Smith, Bob", "Green, Joe", "Hue, Lisa")),
+  Exam.A = c(85, 55, 90), Exam.B = c(82, 49, 97))
+raw
+agg <- score(y = raw, sort.by = "Letter", decreasing = FALSE)
+names(agg); agg
+summary(agg, digits = 1) 
 
 # D. S3 is convenient but not rigorous / not safe
-aa <- 10; aa  # print.default works for a vector.
-class(aa) <- c("score", "scoreNum"); aa  # print.score doest not work.
-aa <- c(aa, 20); aa  # class removed by c(); print.default works!
+aa <- 10; class(aa); aa                        # print.default for vector
+class(aa) <- c("score", "scoreNum"); class(aa) # class changed
+aa                                             # print.score not working
+aa <- c(aa, 20); class(aa); aa                 # class removed by c()
+aa                                             # print.default works again

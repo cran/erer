@@ -6,7 +6,7 @@ write.table(x = table.3, file = "OutInsTable3.csv", sep = ",")
 write.table(x = table.4, file = "OutInsTable4.csv", sep = ",")
 
 # A2. Export two text tables to one file
-# Warning messages will generate with "append = TRUE", which is fine.
+# A warning message will pop up "append = TRUE"; fine in this case.
 write.table(x = table.3, file = "OutInsTableAll.csv", sep = ",",
   append = FALSE)
 write.table(x = table.4, file = "OutInsTableAll.csv", sep = ",",
@@ -37,6 +37,6 @@ for (i in 1:length(name)) {
 }
 
 # C. Export graphs
-png(file = "OutTestFigure1.png")
-  plot(1:10)
+png(file = "testFigure1.png")
+  plot(1:100)
 dev.off()

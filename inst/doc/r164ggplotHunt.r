@@ -1,6 +1,5 @@
 # A. Run the program and generate the default graph
-setwd("C:/aErer")
-source("r072sunSJAF.r", echo = FALSE)
+setwd("C:/aErer"); source("r072sunSJAF.r", echo = FALSE)
 names(p1); class(p1); plot.maTrend
 
 windows(width = 4, height = 3, pointsize = 9); bringToTop(stay = TRUE)
@@ -28,12 +27,14 @@ f2 <- f1 +
     breaks = ya, labels = yb) +   
   theme_classic(base_size = 9, base_family = "serif") +  
   annotate(geom = "text", label = c("Nonresident", "All", "Resident"), 
-    x = c(39, 50, 60), y = c(0.35, 0.22, 0.18), family = 'serif', size= 3)
+    x = c(39, 50, 60), y = c(0.35, 0.22, 0.18), family = "serif", size= 3)
 str(f2); class(f2)
   
 # B3. Show the graph on a screen device
 windows(width = 4, height = 3); f2
 
 # B4. Save the graph on a file device
-pdf(file = "fig_ggplotHunt.pdf", width = 4, height = 3); f2; dev.off()
+pdf(file = "fig_ggplotHunt.pdf", width = 4, height = 3)
+f2
+dev.off()
 ggsave(filename = "fig_ggplotHunt.pdf", plot = f2, width = 4, height = 3)

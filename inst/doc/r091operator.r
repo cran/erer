@@ -23,7 +23,7 @@ exam.total
 (3 ^ 2 + 4 > 60) & (10 != 2.5)  # FALSE; clearer with the parentheses
 
 # Rounding errors
-71 / 3 * 3 == 71  # TRUE
+71 / 3 * 3 == 71              # TRUE
 all.equal(71 / 3 * 3, 71)     # TRUE
 all.equal(10 / 3, 3.3333333)  # TRUE
 identical(10 / 3, 3.3333333)  # FALSE

@@ -32,5 +32,4 @@ b3 <- b[["chick"]][3, ]; b3                      # two layers of indexes
 
 # Index on array
 (a <- array(data = 1:30, dim = c(3, 5, 2)))
-(a1 <- a[2, 3, 1])
-(a2 <- a[, 3, 2])
+(a1 <- a[2, 3, 1]); (a2 <- a[, 3, 2])

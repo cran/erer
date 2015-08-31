@@ -24,13 +24,13 @@ dog.b <- function(w) {
   return(result)
 }
 
-print.ego <- function(x, ...) {  # define a S3 print method
+print.ego <- function(x, ...) {  # define an S3 print method
   cat("\n=== My personalized output by S3 =========\n")
   print(x$z)
   invisible(x)
 }
 
-plot.ego <- function(x, ...) {  # define a S3 plot method
+plot.ego <- function(x, ...) {  # define an S3 plot method
   plot(x = x$w, y = x$z, col ="blue", main = "My first graph by S3!")
   invisible(NULL)  
 }
@@ -48,7 +48,7 @@ dog.c <- function(w) {
   if (!is.numeric(w)) stop("w has to be numeric.\n")
   z <- w / 100
   m <- ifelse(test = w[1] < 50, yes = "small", no = "big")
-  result <- new("earth", w = w, z = z, m = m)  # create a S4 object
+  result <- new("earth", w = w, z = z, m = m)  # create an S4 object
   return(result)
 }
 

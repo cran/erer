@@ -19,13 +19,13 @@ dev.off()
 
 # A4. Manual recording and replaying
 windows(); bringToTop(stay = TRUE) 
-# use mouse on pull-down menus in the window: History > Recording
+# use mouse on pull-down menus in the window: History => Recording
 plot(1:10, col = 'red')
 plot(rnorm(30), col = 'black')
-# use mouse on pull-down menus in the window: History > Previous, Next
+# use mouse on pull-down menus in the window: History => Previous, Next
 
 # B. Multiple pages on multiple screen devices for comparison
-# B1. Initiate multiple windows mannually
+# B1. Initiate multiple windows manually
 windows(); bringToTop(stay = TRUE); plot(1:3, col = 'red')
 windows(); bringToTop(stay = TRUE); plot(5:7, col = 'purple')
 windows(); bringToTop(stay = TRUE); plot(7:9, col = 'green')
@@ -38,20 +38,20 @@ for (i in 1:3) {
 }
 
 # C. Saving multiple pages as a single file
-pdf(file = "mpage.pdf", onefile = TRUE)  # 3 graphs in 1 file
+pdf(file = "testMpage.pdf", onefile = TRUE)  # 3 graphs in 1 file
 plot(rnorm(500)); plot(1:100); plot(3:20)
 dev.off()
 
 # D. Saving multiple pages as multiple files
-pdf(file = "mpage%01d.pdf", onefile = FALSE)  # 3 graphs in 3 files
+pdf(file = "testMpage%01d.pdf", onefile = FALSE)  # 3 graphs in 3 files
 plot(rnorm(500)); plot(1:100); plot(3:20)
 dev.off()
 
-png(file = "npage.png")  # 1 file for the last graph; usually an error
+png(file = "testNpage.png")  # 1 file for the last graph; usually an error
 plot(rnorm(500)); plot(1:100); plot(3:20)
 dev.off()
 
-png(file = "npage%01d.png")  # 3 graphs in 3 files
+png(file = "testNpage%01d.png")  # 3 graphs in 3 files
 plot(rnorm(500)); plot(1:100); plot(3:20)
 dev.off()
 
@@ -59,7 +59,7 @@ dev.off()
 dnor <- list(da = rnorm(30), db = rnorm(300), dc = rnorm(1000))
 color <- c('red', 'purple', 'green')
 for (i in 1:3) {
-  png(file = paste("gpage", i, ".png", sep = ""))  
+  png(file = paste("testGpage", i, ".png", sep = ""))  
   plot(dnor[[i]], col = color[i])
   dev.off()  
 }  

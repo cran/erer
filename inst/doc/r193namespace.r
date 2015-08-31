@@ -1,5 +1,5 @@
 # A. packages avaiable
-p1 <- available.packages(); str(p1)
+options(width = 73); p1 <- available.packages(); str(p1)
 p1[c("apt", "erer", "xlsx"), c(1, 2, 4)]
 
 # B. packages installed on a computer

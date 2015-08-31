@@ -14,7 +14,7 @@ vaVi <- daVich[, 3]; vaCh <- daVich[, 4]
 # B. Traditonal graphics
 # Figure 1 Import values from China and Vietnam
 win.graph(width = 5, height = 2.8, pointsize = 9); bringToTop(stay = TRUE)
-par(mai = c(0.4, 0.5, 0.1, 0.1), mgp = c(2, 1, 0), family = 'serif')
+par(mai = c(0.4, 0.5, 0.1, 0.1), mgp = c(2, 1, 0), family = "serif")
 plot(x = vaCh, lty = 1, lwd = 1, ylim = c(0, 60), xlab = '',
   ylab = 'Montly import value($ million)', axes = FALSE)
 box(); axis(side = 1, at = 2002:2010) 
@@ -26,7 +26,7 @@ fig1.base <- recordPlot()
 
 # Figure 2 Import prices from China and Vietnam
 win.graph(width = 5, height = 2.8, pointsize = 9)
-par(mai = c(0.4, 0.5, 0.1, 0.1), mgp = c(2, 1, 0), family = 'serif')
+par(mai = c(0.4, 0.5, 0.1, 0.1), mgp = c(2, 1, 0), family = "serif")
 plot(x = prCh, lty = 1, type = 'l', lwd = 1, ylim = range(prCh, prVi),
   xlab = '', ylab = 'Monthly import price ($/piece)' )
 lines(x = prVi, lty = 3, type = 'l', lwd = 1)
@@ -35,15 +35,15 @@ legend(x = 2008.5, y = 175, legend = c('China', 'Vietnam'),
 
 # Figure 3 Sum of dquared errors by threshold value from MTAR
 win.graph(width = 5.1, height = 3.3, pointsize = 9)
-par(mai = c(0.5, 0.5, 0.1, 0.1),  mgp = c(2.2, 1, 0), family = 'serif')
+par(mai = c(0.5, 0.5, 0.1, 0.1),  mgp = c(2.2, 1, 0), family = "serif")
 plot(formula = path.sse ~ path.thr, data = t5$path, type = 'l',
      ylab = 'Sum of Squared Errors', xlab = 'Threshold value')
 
 # -------------------------------------------------------------------------     
 # C. ggplot for three figures
-pp <- theme(axis.text   = element_text(size = 8, family = 'serif')) +
-      theme(axis.title  = element_text(size = 9, family = 'serif')) +
-      theme(legend.text = element_text(size = 9, family = 'serif')) +
+pp <- theme(axis.text   = element_text(size = 8, family = "serif")) +
+      theme(axis.title  = element_text(size = 9, family = "serif")) +
+      theme(legend.text = element_text(size = 9, family = "serif")) +
       theme(legend.position = c(0.85, 0.9) ) +
       theme(legend.key = element_rect(fill = 'white', color = NA)) +
       theme(legend.background = element_rect(fill = NA, color = NA))      
@@ -71,16 +71,18 @@ fig3 <- ggplot(data = t5$path) +
   labs(x = 'Threshold value', y = 'Sum of squared errors') +
   scale_y_continuous(limits = c(5000, 5700)) +
   scale_x_continuous(breaks = c(-10:7)) +
-  theme(axis.text  = element_text(size = 8, family = 'serif')) + 
-  theme(axis.title = element_text(size = 9, family = 'serif'))
+  theme(axis.text  = element_text(size = 8, family = "serif")) + 
+  theme(axis.title = element_text(size = 9, family = "serif"))
 
 # -------------------------------------------------------------------------
 # D. Show on screen devices or save on file devices
 pdf(file = 'OutBedFig1base.pdf', width = 5, height = 2.8, pointsize = 9)
 replayPlot(fig1.base); dev.off()
+
 windows(width = 5, height = 2.8); fig1 
 windows(width = 5, height = 2.8); fig2 
 windows(width = 5, height = 2.8); fig3 
-ggsave(fig1, file = 'OutBedFig1ggplot.pdf', width = 5, height = 2.8)
-ggsave(fig2, file = 'OutBedFig2ggplot.pdf', width = 5, height = 2.8)
-ggsave(fig3, file = 'OutBedFig3ggplot.pdf', width = 5, height = 2.8) 
+
+ggsave(fig1, filename = 'OutBedFig1ggplot.pdf', width = 5, height = 2.8)
+ggsave(fig2, filename = 'OutBedFig2ggplot.pdf', width = 5, height = 2.8)
+ggsave(fig3, filename = 'OutBedFig3ggplot.pdf', width = 5, height = 2.8) 

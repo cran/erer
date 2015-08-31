@@ -2,7 +2,7 @@
 library(erer); data(daIns)
 sam <- daIns[, c("Y",  "Race", "Marital", "Nonres", "Injury", 
   "HuntYrs", "Age", "Inc")]
-head(sam)
+head(sam, n = 2)
 
 # A. Quick summarization by row or column
 # A1. Summary()

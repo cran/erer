@@ -26,13 +26,13 @@ str(three.db); three.db
 length(month.name); nchar(month.name)
 tu1 <- toupper(three); tu2 <- casefold(three, upper = TRUE)
 tw1 <- tolower(three); tw2 <- casefold(three, upper = FALSE)
-num <- toupper("abc45Y") # numbers are not affected
+num <- toupper("abc45Y")  # numbers are not affected
 three.ch <- chartr(old = "Az", new = "aZ", x = three)
 tu1; tw1; num; three.ch
 
 # Extracting and replacing parts from a string
 three.abb <- three.abb2 <- tolower(substr(three, start = 1, stop = 4))
 substring(three.abb2, first = 1, last = 4) <- c("sout", "nort", "west")
-one <- strsplit("Alabama", split = "")  # individual letters
-two <- strsplit("Alabama", split = "a") # split by "a" 
+one <- strsplit("Alabama", split = "")   # individual letters
+two <- strsplit("Alabama", split = "a")  # split by "a" 
 one; two

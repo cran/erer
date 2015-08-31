@@ -1,4 +1,5 @@
-ocME <- function(w, x.mean = TRUE, rev.dum = TRUE, digits = 3)
+# A new function: marginal effect for ordered choice
+ocME <- function(w, rev.dum = TRUE, digits = 3)
 {
   # 1. Check inputs; similar to ocProb()
   # 2. Get data out: x may contains factors so use model.matrix
@@ -29,9 +30,11 @@ ocME <- function(w, x.mean = TRUE, rev.dum = TRUE, digits = 3)
   for (j in 1:J) {
     u1 <- c(z[j] - xb); u2 <- c(z[j+1] - xb)
     if (w$method == "probit") {
-      s1 <- -u1; s2 <- -u2
+      s1 <- -u1
+      s2 <- -u2
     } else {
-      s1 <- 1 - 2 * pfun(u1); s2 <- 1 - 2 * pfun(u2)
+      s1 <- 1 - 2 * pfun(u1)
+      s2 <- 1 - 2 * pfun(u2)
     }
     d1 <-      dfun(u1) * (diag(1,K,K) - s1 * (b.est %*% t(x.bar)))
     d2 <- -1 * dfun(u2) * (diag(1,K,K) - s2 * (b.est %*% t(x.bar)))
@@ -80,3 +83,9 @@ ocME <- function(w, x.mean = TRUE, rev.dum = TRUE, digits = 3)
   class(result) <- "ocME"
   return(result)
 }
+
+# Example: The specification is from MASS.
+library(erer); library(MASS); data(housing); tail(housing)
+reg3 <- polr(formula = Sat ~ Infl + Type + Cont, data = housing, 
+  weights = Freq, Hess = TRUE, method = "probit")
+m3 <- ocME(w = reg3); m3

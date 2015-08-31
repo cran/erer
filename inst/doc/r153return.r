@@ -26,10 +26,8 @@ unlist(test2(aa = 8)); unlist(test2(aa = 11))
 # B1. Use list to hold reults: define it at the beginning
 test3 <- function(aa) {
   # Body: transformation and output selection  
-  result <- list()
-  result$aa <- aa
-  bb <- aa + 83
-  result$bb <- bb
+  result <- list(); result$aa <- aa
+  bb <- aa + 83; result$bb <- bb
   if (aa > 10) {result$cc <- aa * 3}
   
   # Body: output 
@@ -55,4 +53,4 @@ identical(r7, r8)  # TRUE
 
 # D. Functions without returning a value
 plot.default; write.table
-out <- plot(1:10); out
+out <- plot(1:10); out  # out is NULL

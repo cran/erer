@@ -9,7 +9,7 @@ fitBina <- function(data, name.y, name.x, par0 = NULL,
   model <- match.arg(model)
   cdf <- switch(EXPR = model, logistic = plogis, probit = pnorm)
 
-  # A2. Contruct loglikehood function and maximization by optim()
+  # A2. Construct loglikehood function and maximization by optim()
   loglike <- function(b, x, y) {
     p <- as.vector(cdf(x %*% b))
     val <- sum(y * log(p) + (1 - y) * log(1 - p))
@@ -60,4 +60,4 @@ ka <- glm(formula = Y ~ Injury + HuntYrs + Nonres + Lspman + Lnong +
   family = binomial(link = "logit"), data = daIns, x = TRUE)
 kb <- update(ka, family = binomial(link = "probit"))
 round(x = summary(ka)$coefficients, digits =3)[1:3, ]  # R logit
-round(x = summary(kb)$coefficients, digits =3)[1:3, ]  # R probit
+round(x = summary(kb)$coefficients, digits =3)[1:3, ]  # R pro

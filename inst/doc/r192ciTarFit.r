@@ -74,25 +74,20 @@ Return a list object of class \code{"ciTarFit"} with these components:
 
 \references{
 Balke, N.S., and T. Fomby. 1997. Threshold cointegration. International 
-  Economic Review 38(3):627-645. 
-
+  Economic Review 38(3):627-645.  
 Enders, W., and C.W.J. Granger. 1998. Unit-root tests and asymmetric 
   adjustment with an example using the term structure of interest rates.
-  Journal of Business & Economic Statistics 16(3):304-311.
-
+  Journal of Business & Economic Statistics 16(3):304-311. 
 Enders, W., and P.L. Siklos. 2001. Cointegration and threshold 
   adjustment. Journal of Business and Economic Statistics 19(2):166-176.
 }
 
-\author{Changyou Sun (\email{cs258@msstate.edu})}
-
+\author{Changyou Sun (\email{cs258@msstate.edu})}  
 \seealso{
   \code{\link{summary.ciTarFit}} for a summary method;
   \code{\link{ciTarLag}} for lag selection; and
   \code{\link{ciTarThd}} for threshold selection.
 }
-
-\examples{
-# see example at daVich
+\examples{# see example at daVich
 }
 \keyword{regression}

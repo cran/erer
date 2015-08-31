@@ -6,7 +6,7 @@ demo(persp)    # demo for one function
 
 # Math typing
 aa <- 1000
-windows(width = 5.5, height = 3, pointsize = 10)
+windows(width = 5.5, height = 3, pointsize = 10, family = "serif")
 par(mai = c(0.4, 0.4, 0.1, 0.1))
 plot(1:5, type = "n")  # an empty plot generated
 text(x = 2, y = 4, labels = 
@@ -16,13 +16,13 @@ text(x = 2, y = 2, labels = bquote(expr = delta == .(aa)))  # good
 text(x = 4, y = 3, labels = substitute(expr = aa))  # good for "aa" symbol
 text(x = 4, y = 2, labels = aa)  # good for the value of "aa"
 myplot <- recordPlot()
-
-pdf(file = "C:/aErer/fig_math.pdf", width = 6, height = 3, pointsize = 10)
-replayPlot(myplot); dev.off()
+ 
+pdf(file = "c:/aErer/fig_math.pdf", width = 6, height = 3, pointsize = 10,
+  family = "serif")   
+replayPlot(myplot); dev.off()    
 
 # Interactive functions
-windows(); plot(1:10); locator(n = 3)
-identify(x = 3, y = 3)
+windows(); plot(1:10); locator(n = 3); identify(x = 3, y = 3)
 
 # Build a graph with low-level functions
 set.seed(12); dat <- rnorm(30) 

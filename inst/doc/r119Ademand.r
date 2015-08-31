@@ -10,7 +10,7 @@ in.mai <- c(0.3, 0.3, 0.1, 0.1)
 in.axes <- in.ann <- in.draw <- FALSE; in.x <- 0.2; in.y <- 0.3
 
 # 3. Shared commands
-par(mai = in.mai, family = "serif", mgp = c(2, 0.6, 0), las = 1)
+par(mai = in.mai, mgp = c(2, 0.6, 0), las = 1, family = "serif")
 plot(0, xlim = c(0, 10), ylim = c(1, 9.5), type = "n", axes = in.axes,
   ann = in.ann, xaxs = "i", yaxs = "i", xlab = "", ylab = "")
 
@@ -26,7 +26,6 @@ if (in.draw) {  # adjustment on the axis lines
   axis(side = 1, labels = FALSE, lwd.ticks = -1, at = c(0, 10))
   axis(side = 2, labels = FALSE, lwd.ticks = -1, at = c(1, 9.5))
 }
-
 lines(x = c(0, 9), y = c(2, 8))  # Supply curve
 lines(x = c(0, 9), y = c(8, 2))  # Initial demand curve
 lines(x = c(0, 9), y = c(9, 3))  # New demand curve
@@ -51,5 +50,7 @@ mtext(text = c("d", "e", "f", expression(P[b]), expression(P[a]), "g"),
 out.demand <- recordPlot()
 
 # Graph version C
-pdf(file = "C:/aErer/fig_demandB.pdf", width = 3, height = 4, pointsize=9)
-replayPlot(out.demand); dev.off()
+pdf(file = "C:/aErer/fig_demandB.pdf", width = 3, height = 4, 
+  pointsize = 9, family = "serif")
+replayPlot(out.demand)
+dev.off()

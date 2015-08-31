@@ -33,7 +33,7 @@
 
 \details{This is the transformated data set for static AIDS model. The transformation detail is described in Wan et al. (2010).}
 
-\source{U.S. ITC, 2010. Interactive tariff and trade data web. \url{http://dataweb.usitc.gov} (Assecced on March 1, 2010).}
+\source{U.S. ITC, 2010. Interactive tariff and trade data web. US International Trade Commission (Assecced on March 1, 2010).}
 
 \references{Wan, Y., C. Sun, and D.L. Grebner. 2010. Analysis of import demand for wooden beds in the United States. Journal of Agricultural and Applied Economics 42(4):643-658.}
 

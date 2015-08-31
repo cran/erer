@@ -19,27 +19,27 @@ for (i in 1:8) {
 }  
 daFig$wrap <- factor(x = daFig$wrap, levels = 
   wrap.n[c(1, 5, 2, 6, 3, 7, 4, 8)], ordered = TRUE)
-levels(daFig$wrap)
+levels(daFig$wrap)  # reordered to arrange plots
 daFig1 <- daFig[daFig$wrap %in% wrap.n[1:4], ]  # data for column 1
 daFig2 <- daFig[daFig$wrap %in% wrap.n[5:8], ]  # data for column 2
 break.x <- c(2002, 2004, 2006, 2008)
+head(daFig, n = 4)
+head(daFig2, n = 4)
 
 # C. Three versions of ggplot graphs
 # C1. Version fa = default ggplot graph
 library(ggplot2)
-theme_set(theme_gray(base_size = 10, base_family = 'serif'))  # global
+theme_set(theme_gray(base_family = 'serif', base_size = 10))  # global
 fa <- ggplot(data = daFig) +  # all
   geom_line(mapping = aes(x = VAR.x, y = VAR.y)) + 
   facet_wrap(facets = ~ wrap, nrow = 4, scales = 'free_y') +
   scale_x_date(name = '', labels = as.character(break.x), breaks = 
     as.Date(paste(break.x, "-1-1", sep = ""), format = "%Y-%m-%d"))+
-  scale_y_continuous(name = '') +
-  theme_gray(base_size = 10, base_family = 'serif')
+  scale_y_continuous(name = '')
 windows(width = 5, height = 4); bringToTop(stay = TRUE); fa
 
 # C2: Version fb = no gray background
-fb <- fa +
-  theme_bw(base_size = 10, base_family = 'serif') +
+fb <- fa + theme_bw(base_size = 10, base_family = 'serif') +
   theme(panel.grid.minor = element_blank()) +    
   theme(panel.grid.major = element_blank())
 windows(width = 5, height = 4); bringToTop(stay = TRUE); fb
@@ -49,15 +49,16 @@ fc1 <- fa %+% daFig1  # 1st column
 fc2 <- fa %+% daFig2  # 2nd column
 library(grid); u <- "inches"
 win.graph(width = 5, height = 4); bringToTop(stay = TRUE)
-vp.right <- viewport(x = 0.45, y = -0.06, width = 0.575, height = 1.1,
+vp.right <- viewport(x = 0.46, y = -0.06, width = 0.57, height = 1.1,
   just = c('left', 'bottom'))
-vp.left <- viewport(x = -0.054, y = -0.06, width = 0.575, height = 1.1,
+vp.left <- viewport(x = -0.054, y = -0.06, width = 0.57, height = 1.1,
   just = c('left', 'bottom'))  
-print(fc2, vp = vp.right); print(fc1, vp = vp.left)
+ggplot2:::print.ggplot(fc2, vp = vp.right); print(fc1, vp = vp.left)
 fc <- recordPlot()
 
 # D. Save fa and fc on a file device
 setwd("C:/aErer")
 ggsave(filename = "fig_ggplotAids.pdf", plot = fa, width = 5, height = 4)
 pdf(file = "fig_ggplotAidsGrid.pdf", width = 5, height = 4)
-replayPlot(fc); dev.off()
+replayPlot(fc)
+dev.off()

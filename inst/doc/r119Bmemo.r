@@ -23,6 +23,7 @@ arrows(x0 = 1, y0 = c(-1.5, 1.5), x1 = 1, y1 = c(-3,3), col = "gray80",
   lwd = 10, code = 2, length = 0.15, angle = 20, lend = 1, ljoin = 1)
 rect(xleft = 0.2, ybottom = c(-0.3, 0.3), xright = 5, ytop = c(-1.2, 1.2),
   col = "white")
+  
 text(x = 1.1, y = 0.7, labels = "An author's work", pos = 4, adj = c(1, 1))
 text(x = 0.9, y = -0.8, labels = "A reader's memory", pos = 4, adj=c(1, 1))
 rect(xleft = c(0, 3, 6, 0, 3, 6), 
@@ -34,16 +35,18 @@ rect(xleft = 9.0, ybottom = -1.0, xright = 10.50, ytop = 1.20,
 rect(xleft = 8.9, ybottom = -1.1, xright = 10.35, ytop = 1.05, col="white")
 
 text(x = c(0.1, 3.1, 6.1), y = c(5.8, 3.95, 2.15, -6.05, -4.25, -2.4), 
-  pos = 4, adj = c(1, 1), labels = c(  
+  pos = 4, adj = c(1, 1), labels = c(
   "1. Research Idea\n- One sentence\n- A few days or months",
   "2. Outline\n- 2 pages\n- Several months",
   "3. Details\n- 30 pages\n- Several weeks",
   "3. Research Idea\n- Topic only\n- After several years",
-  "2. Outline\n- Structure only\n- In a year",   
+  "2. Outline\n- Structure only\n- In a year",
   "1. Details\n- Most facts\n- In several days"))
 text(x = 9.1, y = 0.4, labels = "Paper", pos = 4, adj = c(1, 1))
 memo.graph <- recordPlot()  # record the graph for version C
 
 # Graph version C
-pdf(file = "C:/aErer/fig_memo.pdf", width = ww, height = hh, pointsize = 9)
-replayPlot(memo.graph); dev.off()
+pdf(file = "C:/aErer/fig_memo.pdf", width = ww, height = hh, pointsize = 9,
+  family = "serif")
+replayPlot(memo.graph)
+dev.off()

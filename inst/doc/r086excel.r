@@ -5,6 +5,7 @@ setwd("C:/aErer"); getwd(); dir()  # setting up global directory
 # A. Read data in text format
 daIns <- read.table(file = 'RawDataIns2.csv', header = TRUE, sep = ',')
 
+# B. Read data in Excel format
 # B1. Read one Excel sheet each time; output = a data frame
 my.sheet <- c("dataImport", "dataExp", "nameImport", "nameExp", "source")
 a1 <- read.xlsx(file = "RawDataAids.xlsx", sheetName = my.sheet[1])
@@ -31,5 +32,14 @@ connectD <- odbcConnectExcel2007('RawDataAids.xlsx')
 odbcClose(connectD)
 
 identical(a1, b1); identical(a2, b2); identical(cc[[3]], dd[[3]])
-names(cc)
-cc[[1]][1:3, 1:7]
+names(cc); cc[[1]][1:3, 1:7]
+
+# C. Import graphics
+library(png); library(jpeg)
+nameA <- system.file("img", "Rlogo.png", package = "png" ); nameA
+nameB <- system.file("img", "Rlogo.jpg", package = "jpeg"); nameB
+# nameC <- "C:/bHome/EdPictures/MKSun2014Oct.jpg"  # your own picture
+
+imageA <- readPNG(source  = nameA); dev.new(); grid.raster(imageA)
+imageB <- readJPEG(source = nameB); dev.new(); grid.raster(imageB)
+# imageC <- readJPEG(source = nameC); dev.new(); grid.raster(imageC)

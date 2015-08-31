@@ -27,7 +27,7 @@ ue <- miss(x = "abc")
 undebug(miss); isdebugged(miss)
 
 debugonce(miss) 
-uf <- miss(x = 10) # can debug(lost) in the middle of single-stepping
+uf <- miss(x = 10)  # can debug(lost) in the middle of single-stepping
 isdebugged(miss) 
 
 # C2. trace(), untrace()
@@ -37,8 +37,9 @@ ug <- miss(x = 10)
 untrace(miss)
 
 # C3. setBreakpoint(), unrace()
-source("C:/aErer/miss.r")
-setBreakpoint(srcfile = "miss.r", line = 3, clear = FALSE)
+# The miss() function at the beginning is saved in a file.
+source("C:/aErer/r181missFunction.r")  
+setBreakpoint(srcfile = "r181missFunction.r", line = 3, clear = FALSE)
 ug <- miss(x = 10)
 untrace(miss)
 

@@ -15,6 +15,7 @@ digits <- 2
 
 class(test); typeof(test); environment(test)
 class(res1); typeof(res1); environment(res1)
+
 en <- environment(fun = aiStaFit); en
 ls(name = environment(fun = test)); ls(name = en); search()
 
@@ -28,7 +29,7 @@ deparse(numb); str(deparse(numb))  # content; character
 substitute(numb); str(substitute(numb))  # name; symbol
 deparse(substitute(numb)); str(deparse(substitute(numb))) # name; character
 
-dog <- function(num, let) {
+wood <- function(num, let) {
   n1 <- deparse(num)
   n2 <- substitute(num)
   n3 <- deparse(substitute(num))
@@ -36,7 +37,7 @@ dog <- function(num, let) {
   n5 <- sapply(X = n4, FUN = deparse)
   return(listn(n1, n2, n3, n4, n5))
 }
-(ch <- dog(num = numb, let = lett))
+(ch <- wood(num = numb, let = lett))
 
 # -------------------------------------------------------------------------
 # C. match.arg(); match.call(); update()
@@ -46,13 +47,12 @@ deer <- function(c1, c2, c3, c4, c5 = c("Mon", "Wed", "Fri"), ...) {
   c6 <- match.arg(c5)
   c7 <- match.call(definition = deer, expand.dots = TRUE)
   c8 <- match.call(definition = deer, expand.dots = FALSE)
-  call <- sys.call()  # The component has to be named as "call".
+  call <- sys.call()  # This has to be named as "call".
   result <- listn(key, c5, c6, c7, c8, call)
   return(result)
 }
 (sh <- deer(c1 = 1, c2 = 2, c3 = 3, c4 = 4, extra = "fish"))
-str(sh)
-sh2 <- update(sh, c1 = 71); sh2[c("key", "call")]
+str(sh); sh2 <- update(sh, c1 = 71); sh2[c("key", "call")]
 
 # -------------------------------------------------------------------------
 # D. model.frame(); terms()
@@ -73,3 +73,9 @@ ww <- butter(formula = ff, data = daIns)
 round(t(ww[["coeff"]]), 5)
 names(attributes(ww$small))
 terms(ww$small)
+
+# -------------------------------------------------------------------------
+# D. expression(); eval()
+math <- expression(x ^ 2 + y); class(math); str(math)
+x <- 1; y <- 3; ma <- eval(math) + 30; ma
+x <- 5; y <- 6; mb <- eval(math) + 50; mb

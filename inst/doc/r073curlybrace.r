@@ -13,7 +13,7 @@ if (x > 5) {
 }
 x; y 
 
-# c. Incorrect use of if/else; a parenthesis mismatch
+# c. Incorrect use of if/else; a mismatch of curly braces
 if (x > 5) {
   z <- x + 1}
 else {

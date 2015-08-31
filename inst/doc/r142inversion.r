@@ -11,7 +11,7 @@ identical(t(tree) %*% tree, crossprod(tree))
 
 # Matrix inversion
 des2 <- solve(des); des2
-all.equal(des2 %*% des, des %*% des2)
+all.equal(des2 %*% des, des %*% des2)  # TRUE
 library(MASS); ginv(des)
 
 # Other matrix functions

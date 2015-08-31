@@ -23,7 +23,7 @@ str(daInsNam); str(daInsNam2)
 
 # Task 4: Reorder or sort a data frame by row or column
 small <- daIns[1:20, 1:13]
-small2 <- small[c(11:20, 1:10), c(1:11, 13, 12)]   # Mannual reordering
+small2 <- small[c(11:20, 1:10), c(1:11, 13, 12)]   # Manual reordering
 age.sor <- sort(small$Age, decreasing = FALSE)     # sorted content
 age.loc <- order(small$Age, decreasing = FALSE)    # location
 age.sor2 <- small$Age[age.loc]

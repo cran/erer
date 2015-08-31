@@ -1,5 +1,5 @@
 # A. Run the program and generate the data
-setwd("C:/aErer"); source("r072sunSJAF.r", echo = FALSE)
+setwd("C:/aErer"); source("r072sunSJAF.r", echo = FALSE); library(grid)
 pr <- p1$trend; class(pr); tail(pr); plot(p1)
 xa <- seq(from = 0, to = max(pr[, 1]), by = 10)
 ya <- seq(from = 0.10, to = max(pr[, 2:4]), by = 0.05)
@@ -29,6 +29,7 @@ grid.lines(x = unit(pr$HuntYrs, u), y = unit(pr[, 2], u), gp = gpar(lty=1))
 grid.lines(x = unit(pr$HuntYrs, u), y = unit(pr[, 3], u), gp = gpar(lty=2))
 grid.lines(x = unit(pr$HuntYrs, u), y = unit(pr[, 4], u), gp = gpar(lty=3))
 grid.lines(x = unit(mv, u), y = unit(c(0, 1), "npc"), gp = gpar(lty = 4))
+
 grid.text("Hunting experience (Year)", y = unit(-2.5, "lines"))
 grid.text("Prob(Insurance purchase = yes)", x = unit(-3, "lines"), rot=90)
 grid.text(label = c("Nonresident", "All", "Resident"), 
@@ -41,5 +42,5 @@ grid.legend(labels = c("Nonresident", "All", "Resident"), ncol = 1,
 out <- recordPlot()  # save the display list
 
 # C. Save PDF on a file device
-pdf(file = "fig_gridHunt.pdf", width = 4, height = 3) 
+pdf(file = "fig_gridHunt.pdf", width = 4, height = 3, family = "serif")
 replayPlot(out); dev.off() 

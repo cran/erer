@@ -1,5 +1,5 @@
 # A. Data: number of plots, points, and colors
-setwd("C:/aErer"); library(copula)
+setwd("C:/aErer"); library(copula); library(grid)
 num.plot <- 500; num.points <- 10000
 set.rho <- seq(from = 0, to = 1, length.out = num.plot)
 pie(x = rep(x = 1, times = 15), col = rainbow(15))  # understand rainbow()
@@ -17,7 +17,7 @@ for (i in 1:num.plot) {
 }
 str(sam); head(sam, n = 3)
     
-# C. Three screen shots for ERER book
+# C. Three screenshots for ERER book
 windows(width = 5.3, height = 2.5); bringToTop(stay = TRUE)
 v1 <- viewport(x = 0.02, y = 0.98, width = 0.55, height = 0.5, 
   just = c("left", "top"))
@@ -43,5 +43,6 @@ grid.points(x = sam[, 1], y = sam[, 2], pch = 1,
 showCorrelation <- recordPlot()
 
 # D. Save the three screen shots on a file device
-pdf(file = "fig_showCorrelation.pdf", width = 5.3, height = 2.5)
+pdf(file = "fig_showCorrelation.pdf", width = 5.3, height = 2.5,
+  useDingbats = FALSE)
 replayPlot(showCorrelation); dev.off() 

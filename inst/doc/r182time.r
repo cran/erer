@@ -1,7 +1,6 @@
 # A. Source a program
-#    R Code 15.7 Functions for a linear regression with the S4 mechanism
-setwd("C:/aErer"); source("r157s4.r")
-library(erer); data(daIns)
+#    Program 15.7 A new function for OLS with the S4 mechanism
+setwd("C:/aErer"); source("r157s4.r"); library(erer); data(daIns)
 
 # B. Compare time used by lm2 and lm 
 t0 <- proc.time()
@@ -18,9 +17,8 @@ tb <- system.time(
 
 tc <- system.time(
   for (i in 1:100) {
-    gg <- lm(formula = Y ~ 1 + Injury + HuntYrs + Nonres + Lspman + 
-      Lnong + Gender + Age + Race + Marital + Edu + Inc + TownPop, 
-      data = daIns)
+    gg <- lm(formula = Y ~ 1 + Injury + HuntYrs + Nonres + Lspman + Lnong + 
+      Gender + Age + Race + Marital + Edu + Inc + TownPop, data = daIns)
   }
 )
 total <- rbind(ta, tb, tc)

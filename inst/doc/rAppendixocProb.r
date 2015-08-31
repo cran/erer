@@ -1,3 +1,4 @@
+# A new function: probabilities for ordered choice
 ocProb <- function(w, nam.c, n = 100, digits = 3)
 {
   # 1. Check inputs
@@ -49,8 +50,7 @@ ocProb <- function(w, nam.c, n = 100, digits = 3)
   for (i in 1:J) {
     z1 <- z[i] - xb; z2 <- z[i+1] - xb
     d1 <- diag(c(dfun(z1) - dfun(z2)), n, n) %*% mm
-    q1 <- - dfun(z1)
-    q2 <-   dfun(z2)
+    q1 <- - dfun(z1); q2 <-   dfun(z2)
     dr <- cbind(d1, q1, q2)
     V <- V5[c(1:K, K+i, K+i+1), c(1:K, K+i, K+i+1)]
     va <- dr %*% V %*% t(dr)
@@ -69,6 +69,12 @@ ocProb <- function(w, nam.c, n = 100, digits = 3)
   out[[J+1]] <- round(x = trend, digits = digits)
   names(out) <- paste("predicted_prob", c(lev, "all"), sep = ".")
   result <- listn(w, nam.c, method=w$method, mean.x=colMeans(x), out, lev)
-  class(result) <- "ocProb"
-  return(result)
+  class(result) <- "ocProb"; return(result)
 }
+
+# Example: include "Freq" to have a continuous variable for demo
+library(erer); library(MASS); data(housing); str(housing); tail(housing)
+reg2 <- polr(formula = Sat ~ Infl + Type + Cont + Freq, data = housing, 
+  Hess = TRUE, method = "probit")
+p2 <- ocProb(w = reg2, nam.c = 'Freq', n = 300); p2
+plot(p2)

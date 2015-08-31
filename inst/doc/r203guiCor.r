@@ -1,12 +1,13 @@
 guiCor <- function()
 {
-  # 1. first tab ----------------------------------------------------------
+  # 1. Overall layout -----------------------------------------------------
   rMain <- gwindow(title = "Correlation Between Two Random Variables",
     width = 660, height = 565, visible = TRUE, guiToolkit = "RGtk2")
   rNB <- gnotebook(container = rMain)
   rSta <- ggroup(container = rNB, horizontal = TRUE, label = "Static")
   rDyn <- ggroup(container = rNB, horizontal = FALSE, label = "Dynamic")
-  
+
+  # 2. first tab ----------------------------------------------------------  
   rL <- ggroup(container = rSta)
   rR <- ggroup(container = rSta, horizontal = FALSE)  
   kk <- c("Number of Points", "Color of Points",
@@ -50,7 +51,7 @@ guiCor <- function()
     }
   )
 
-  # 2. second tab  --------------------------------------------------------
+  # 3. second tab  --------------------------------------------------------
   rT <- ggroup(container = rDyn)
   rT1 <- gframe(text = "Number of Plots", container = rT, expand = TRUE)
   rB <- ggroup(container = rDyn)  

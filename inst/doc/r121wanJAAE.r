@@ -1,5 +1,6 @@
 # Title: R Program for Wan et al. (2010 JAAE ); last revised Feb. 2010
-library(RODBC); library(erer); options(width = 120); setwd("C:/aErer")
+library(RODBC); library(erer); library(xlsx)
+options(width = 120); setwd("C:/aErer")
 
 # -------------------------------------------------------------------------
 # 1. Data import and transformation
@@ -30,9 +31,8 @@ imp5 <- update(imp8, label = c("CN", "VN", "ID", "MY")); names(imp5)
 Bed  <- imp8$out; colnames(Bed)[18:20] <- c("dum1", "dum2", "dum3")
 
 # 1.4 Three datasets saved in 'erer' library already
-# All the results in Wan (2010 JAAE ) can be reproduced with saved data.
+# Results in Wan (2010 JAAE ) can be reproduced with saved data directly.
 data(daExp, daBedRaw, daBed); str(daExp); str(Exp) 
-identical(daExp, Exp); identical(daBedRaw, BedRaw); identical(daBed, Bed)
 
 # -------------------------------------------------------------------------
 # 2. Descriptive statistics (Table 1)
@@ -45,7 +45,9 @@ colnames(hog) <- c(paste("s", lab8, sep = ""), "sRW",
                    paste("p", lab8, sep = ""), "pRW", "Expend")
 dog <- bsStat(hog, two = TRUE, digits = 3)$fstat[, -6]
 colnames(dog) <- c("Variable", "Mean", "St. Dev.", "Minimum", "Maximum")
-(table.1 <- dog) 
+dog[, -1] <- apply(X = dog[, -1], MARGIN = 2, 
+  FUN = function(x) {sprintf(fmt="%.3f", x)})
+(table.1 <- dog)
 
 # -------------------------------------------------------------------------
 # 3. Monthly expenditure and import shares by country (Figure 1)
@@ -85,10 +87,8 @@ hDyn  <- aiDynFit(hSta)
 hDyn2 <- aiDynFit(hSta2); lrtest(hDyn2$est, hDyn$est)
 hDyn3 <- aiDynFit(hSta3); lrtest(hDyn2$est, hDyn3$est)
 hDyn4 <- aiDynFit(hSta4); lrtest(hDyn2$est, hDyn4$est)
-
 (table.2 <- rbind(aiDiag(hSta), aiDiag(hDyn)))
-(table.3 <- summary(hSta))
-(table.4 <- summary(hDyn))
+(table.3 <- summary(hSta)); (table.4 <- summary(hDyn))
 
 # 5.2 Own-price elasticities (Table 5)
 es <- aiElas(hSta); ed <- aiElas(hDyn); esm <- edm <- NULL
@@ -119,5 +119,13 @@ summary(uDyn1b <- aiDynFit(uSta1, dum.dif = TRUE))
 
 # -------------------------------------------------------------------------
 # 6. Export five tables
+# Table in csv format
 (output <- listn(table.1, table.2, table.3, table.4, table.5, table.6))
 write.list(z = output, file = "OutAidsTable.csv")
+
+# Table in excel format
+name <- paste("table", 1:6, sep = ".")
+for (i in 1:length(name)) {
+  write.xlsx(x = get(name[i]), file = "OutAidsTable.xlsx",
+    sheetName = name[i], row.names = FALSE, append = as.logical(i - 1))
+}

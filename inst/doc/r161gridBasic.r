@@ -1,35 +1,35 @@
 # A. Three scenarios for "vp" in the plotting function
+library(grid)
 vp1.descrip <- viewport(width = 0.9, height = 0.9, name = "vp1.pushed")
 vp2.descrip <- viewport(width = 0.5, height = 0.5, name = "vp2.pushed")
 
 # A1. vp = NULL (default)
-windows(width = 5.4, height = 3); bringToTop(stay = TRUE)
-current.viewport()         # ROOT
-pushViewport(vp1.descrip)
-grid.rect(vp = NULL)       # vp1.pushed
+dev.new(); current.viewport()  # ROOT
+pushViewport(vp1.descrip); grid.rect(vp = NULL)  # vp1.pushed
 
 # A2. vp = viewport object
-windows(width = 5.4, height = 3); bringToTop(stay = TRUE)
+dev.new()
 grid.text(label = "Output B", gp = gpar(col= 'red'), vp = vp1.descrip)
 current.viewport()  # ROOT
 
-windows(width = 5.4, height = 3); bringToTop(stay = TRUE)
+dev.new()
 pushViewport(vp1.descrip)  # vp1.pushed
 grid.text("Output B", gp = gpar(col= 'green'), vp = NULL)
-popViewport()  # ROOT
+popViewport()       # remove "vp1.pushed"
+current.viewport()  # ROOT
 
 # A3. vp = pushed viewport name
-windows(width = 5.4, height = 3); bringToTop(stay = TRUE)
+dev.new()
 pushViewport(vp1.descrip, vp2.descrip); current.vpTree()  # vp2.pushed
-upViewport(n = 0)                                             # ROOT
+upViewport(n = 0)                                         # ROOT
 grid.rect(gp = gpar(lty = 'solid'), vp = "vp1.pushed")
 downViewport(name = "vp1.pushed")                         # vp1.pushed
 grid.rect(gp = gpar(lty = 'dashed'), vp = "vp2.pushed")
 upViewport(n = 1)                                         # Root
 
-windows(width = 5.4, height = 3); bringToTop(stay = TRUE)
+dev.new()
 pushViewport(vp1.descrip, vp2.descrip)  # vp2.pushed
-upViewport(0)                           # [ROOT]
+upViewport(0)                           # ROOT
 downViewport(name = "vp1.pushed")       # vp1.pushed
 grid.rect(gp = gpar(lty = 'solid'))
 downViewport(name = "vp2.pushed")       # vp2.pushed
@@ -37,12 +37,11 @@ grid.rect(gp = gpar(col = 'purple'))
 upViewport(n = 1)                       # vp1.pushed
 
 # B. Plotting functions, parameters, and units
-convertX(x = unit(2.54, "cm"), unitTo = "inches")  # 1inches
+convertX(x = unit(2.54, "cm"), unitTo = "inches")  # 1 inch
 unit.c(unit(1:3, "inches"), unit(2:4, "cm"))
 
-# Draw a graph with several viewports
-windows(width = 5.4, height = 2.5, pointsize = 9, family = 'serif')
-bringToTop(stay = TRUE)
+# C. Draw a graph with several viewports
+windows(width = 5.4, height = 3, pointsize = 9, family = "serif")
 vp3.descrip <- viewport(x = 0.25, y = 0.4, width = 0.4, height = 0.4,
   angle = 10, name = "vp3.pushed")
 vp4.descrip <- viewport(x = 0.75, y = 0.4, width = 0.4, height = 0.4,

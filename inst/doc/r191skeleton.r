@@ -1,10 +1,10 @@
-# A. Download packages at R console: zip, tar.gz, pdf
+# A. Download packages at the R console: zip, tar.gz, pdf
 #    Then copy the skeleton format of an existing package.
 library(erer)
 download.lib(pkgs = c("apt", "erer"), destdir = "C:/aErer",
   f.zip = FALSE, f.pdf = TRUE)
   
-# B. Create a package skeleton within R console
+# B. Create a package skeleton within the R console
 testFun <- function(y) {
   w <- y + 10
   result <- list(y = y, w = w)
@@ -20,4 +20,4 @@ prompt(object = testFun)
 promptData(object = testDa)
 
 # C. Create a package skeleton on a local drive manually 
-#    Just can be done with normal operations on folders
+#    This can be done with normal operations on folders.

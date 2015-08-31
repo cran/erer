@@ -8,7 +8,7 @@ colnames(bed) <- c("TotExp", colnames(sha)); head(bed)
 # B. Left side
 windows(width = 5.5, height = 3, pointsize = 9); bringToTop(stay = TRUE)
 par(mai = c(0.45, 0.45, 0.45, 0.4), omi = c(0.2, 0.2, 0.2, 0.2),
-  family = "serif", mgp = c(2, 0.6, 0))
+  mgp = c(2, 0.6, 0), family = "serif")
 ts.plot(bed[, -1], lty = 1:3, ylim = range(bed[, -1]) + c(-2, 2), 
   xlab = '', ylab = 'Share (%)')
 text(x = 2002.5, y = c(53, 15, 3), labels = 1:3)
@@ -40,12 +40,12 @@ abline(v = 2005.5, lty = 2)          # a very short vertical line
 do.call("clip", as.list(usr.right))  # restore the original clipping
 abline(v = 2005.7, lty = 2)
 
-# E. Legend
+# E. Legend: two choices
 cc <- c("black", "black", "black", "gray80")
-legend(x = 2002, y = 155, ncol = 2,
+legend(x = 2001.5, y = 157, ncol = 2,
   box.lty = 0, lty = c(1:3, 1), lwd = c(1, 1, 1, 2), col = cc, xpd = TRUE,
-  legend = c("Share - China", "Share - Vietnam", "Share - Indonesia",
-    "Total expenditure"))
+  legend = c("1. Share - China", "2. Share - Vietnam            ", 
+    "3. Share - Indonesia", "4. Total expenditure"))
     
 legend(x = "bottom", inset = -0.3, ncol = 4,
   box.lty = 0, lty = c(1:3, 1), lwd = c(1, 1, 1, 2), col = cc, xpd = TRUE,
@@ -53,6 +53,6 @@ legend(x = "bottom", inset = -0.3, ncol = 4,
 out <- recordPlot()  # save the graph on the screen device
 
 # F. Save a PDF version
-pdf(file = "C:/aErer/fig_region.pdf", width = 5.5, height = 3, pointsize=9)
-replayPlot(out)
-dev.off()
+pdf(file = "C:/aErer/fig_region.pdf", width = 5.5, height = 3, 
+  pointsize = 9, family = "serif")
+replayPlot(out); dev.off()

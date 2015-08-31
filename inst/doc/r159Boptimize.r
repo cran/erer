@@ -11,9 +11,9 @@ pdf(file = "C:/aErer/fig_optimize.pdf", width = 5.5, height = 2.5,
 par(mai = c(0.4, 0.5, 0.1, 0.1), mgp = c(1.7, 0.7, 0), family = "serif")
 curve(expr = fun, from = -15, to = 15, n = 200, ylim = c(-80, 700),
   ylab = expression(y == (x + a)^2 + 20))
-curve(expr = fun(x, a = 10), from = -15, to = 15, lty = 3, add = TRUE)
+curve(expr = fun(x, a = 10), from = -15, to = 15, lty = 2, add = TRUE)
 legend(x = "topleft", legend = c("a = 3", "a = 10"),
-  lty = c(1, 3), box.lty = 0)  
+  lty = c(1, 2), box.lty = 0)  
 
 points(x = c(-10, -3, 15, 15), y = c(20, 20, 344, 645), pch = 19, 
   cex = 1.5, col = "gray40")

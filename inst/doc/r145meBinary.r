@@ -6,7 +6,7 @@ ra <- glm(formula = Y ~ Injury + HuntYrs + Nonres + Lspman + Lnong +
 (ca <- data.frame(summary(ra)$coefficients))
 (magin <- maBina(w = ra))
 
-# B. Calculate marginal effectd (ME) and standard errors
+# B. Calculate marginal effects (ME) and standard errors
 # B1. Input data
 w <- ra; x.mean <- TRUE; rev.dum <- TRUE
 
@@ -30,7 +30,7 @@ se <- sqrt(diag(va))
 # B4. Revise ME and error for dummy independent variables
 if (rev.dum) {
   for (i in 1:ncol(x)) {
-    if (identical(unique(x[,i]), c(0, 1))) {
+    if (identical(sort(unique(x[, i])), c(0, 1))) {
       x.d1 <- x.bar; x.d1[i, 1] <- 1
       x.d0 <- x.bar; x.d0[i, 1] <- 0
       me[i] <- pfun(t(x.d1) %*% b.est) - 

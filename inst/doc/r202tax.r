@@ -38,17 +38,17 @@ guiTax <- function() {
   addSpring(rLb)
   wd.submit <- gbutton(text = "Submit", container = rLb)
   addHandlerClicked(obj = wd.submit, handler = function(h, ...) {
-      inc <- as.numeric(svalue(ia))          # two inputs
-      nd <- as.numeric(svalue(ib)) 
-      agi <- inc - 5000 * nd                 # transformation
+      inc <- as.numeric(svalue(ia))  # input ia from line 30
+      nd <- as.numeric(svalue(ib))   # input ib from line 32
+      agi <- inc - 5000 * nd         # transformation
       ag <- ifelse(agi < 0, yes = 0, no = agi)      
       tax <- ifelse(test = ag <= 10000, yes = ag * 0.1, no = 
         ifelse(test = ag <= 50000, yes = 1000 + (ag - 10000) * 0.2,
           no = 9000 + (ag - 50000) * 0.3)) 
       m.tax <- tax / 12
       m.inc <- (inc - tax) / 12  
-      svalue(oa) <- sprintf(fmt = "%.2f", m.tax)  # two outputs
-      svalue(ob) <- sprintf(fmt = "%.2f", m.inc)
+      svalue(oa) <- sprintf(fmt = "%.2f", m.tax)  # output oa to line 34
+      svalue(ob) <- sprintf(fmt = "%.2f", m.inc)  # output ob to line 36
     }
   )
   visible(rMain) <- TRUE

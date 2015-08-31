@@ -18,8 +18,7 @@ noquote(all4)
 # B1. Extract string elements by literal characters: substr(), pmatch()
 begi <- substr(x = all4, start = 1, stop = 1)
 loca <- pmatch(x = begi, table = "A", nomatch = 0, duplicates.ok = TRUE)
-loc2 <- as.logical(loca)
-nam2 <- all4[loc2]
+loc2 <- as.logical(loca); nam2 <- all4[loc2]
 loc2; nam2
 
 # B2. Extract string elements by regular expression: grep()

@@ -65,7 +65,7 @@ c(w1, w2, w3, w4); w5
 sa <- switch(EXPR = 1, num = 1:5, LETTERS[1:3], 30, 40, 50)
 sb <- switch(EXPR = 2, num = 1:5, LETTERS[1:3], 30, 40, 50)
 sc <- switch(EXPR = 3, num = 1:5, LETTERS[1:3], 30, 40, 50)
-sf <- switch(EXPR = 6, num = 1:5, LETTERS[1:3], 30, 40, 50) # empty 6
+sf <- switch(EXPR = 6, num = 1:5, LETTERS[1:3], 30, 40, 50) # empty slot 6
 sa; sb; sc; sf 
 
 # C3. EXPR = a character string; return a function

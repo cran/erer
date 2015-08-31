@@ -32,9 +32,8 @@ map(database = 'state', region = mbr$region, fill = FALSE, col = 'white',
 out1 <- recordPlot()
 
 # B2. Screen device - regulations in 13 states
-win.graph(width = 5.5, height = 3.4, pointsize = 8) 
-bringToTop(stay = TRUE)
-par(family = 'serif', mgp = c(1, 0.5, 0), tcl = -0.3)
+win.graph(width = 5.5, height = 3.4, pointsize = 8); bringToTop(stay=TRUE)
+par(mgp = c(1, 0.5, 0), tcl = -0.3, family = "serif")
 map(database = 'state', region = mbr$region, fill = TRUE, col = mbr$color,
   xlim = c(-107, -75), ylim = c(24.5, 40), mar = c(4, 4, 0.2, 0.2))
 axis(side = 1, at = c(-104, -98, -92, -86, -80))

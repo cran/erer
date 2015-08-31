@@ -36,7 +36,7 @@ mapply(FUN = quantile, x = sam3, MoreArgs = list(probs = c(0, 0.5, 1)))
 # 3. tapply(): over a ragged array with a factor index
 # Create three factor vectors with labels
 f.race <- factor(x = sam$Race, levels = c(0, 1), 
-  labels = c("Female", "Male"))
+  labels = c("Other", "Caucasian"))
 f.marital <- factor(x = sam$Marital, levels = c(0, 1), 
   labels = c("Unmarried", "Married"))
 f.nonres <- factor(x = sam$Nonres, levels = c(0, 1), 
@@ -51,3 +51,4 @@ tb <- tapply(X = sam$HuntYrs, FUN = mean,
 tb; as.data.frame(as.table(tb))  
 tc <- mean(sam[sam$Race == 1 & sam$Marital == 1 & sam$Nonres == 1, 
   "HuntYrs"])
+tc

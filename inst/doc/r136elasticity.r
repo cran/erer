@@ -4,7 +4,7 @@ hSta; names(hSta); summary(hSta)
 es <- aiElas(z = hSta); names(es); es 
 
 # B. Inputs for elasticity computation
-z <- hSta; cof <- coef(z$est); vco <- vcov(z$est)  
+z <- hSta; cof <- coef(z$est); vco <- vcov(z$est)
 nE <- z$nExoge; nS <- z$nShare; nP <- z$nParam
 av <- colMeans(z$y[, z$share])  # omitted variable may not be the last one
 av.sh <- av[c(z$share[-z$nOmit], z$share[z$nOmit])]
@@ -27,7 +27,7 @@ colnames(expen) <- c("Elas.expen", "Estimate")
 expen
 
 # D1. Hicksian elasticiity: estimate, variance, t, p
-e.hi <- v.hi <-matrix(data = NA, nrow = nS - 1, ncol = nS)
+e.hi <- v.hi <- matrix(data = NA, nrow = nS - 1, ncol = nS)
 for (i in 1:(nS - 1)) {
   for (j in 1:nS) {
     delta <- ifelse(test = i == j, yes = 1, no = 0)
