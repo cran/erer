@@ -1,5 +1,5 @@
-5a60f8dd2a1c978ce19cfeb5ec247c0b *DESCRIPTION
-96f68f3ff74ddee1098fe670e548ea5e *NAMESPACE
+ea533a440f871e0b6cf5d26ec42c7cfd *DESCRIPTION
+50beff6ed025b15914809841b9d29475 *NAMESPACE
 b29190e52a646fb60807c426702399ee *R/aiData.r
 0a8e92416092a4fcdb70421ddc33a1b3 *R/aiDiag.r
 76493cafa3119dc5345094b6ce495d42 *R/aiDynFit.r
@@ -11,7 +11,7 @@ a9ce438d4471621e663ba187e48d14b4 *R/bsFormu.r
 8ea4026925903d9d73574327389804b5 *R/bsStat.r
 0cf52d902cf1b68e2411a77968337ec7 *R/bsTab.r
 8b7e50e6389ab84dc35ac8ab214b9e9c *R/download.lib.r
-b60ea2ff32d976b885800600b66be35b *R/evReturn.r
+f51efb2592ce095d0ab921501cdfb426 *R/evReturn.r
 54d9241bacbb4454e5af4a8ae6d52760 *R/evRisk.r
 f50c2616e907500a1e80f74e0b13e25b *R/head.ts.r
 b3f440a1fef1ed03b4a79434b47533de *R/listn.r
@@ -148,7 +148,7 @@ fcd007299a99b1f9b05231741f8e20dc *man/daLaw.Rd
 ea8fc3f8a157fc48f0fdfad980f619e7 *man/daPe.Rd
 b9878d44e61127952501a7799f1fbd11 *man/daRoll.Rd
 c1c459119b92944cd89a9980844a24b6 *man/download.lib.Rd
-fcd8a785b8e1a4bbcc7f2fbecaa2a3ec *man/erer-package.Rd
+83743745a5413c24ec20a0b32bf627a7 *man/erer-package.Rd
 73bfb8517df150d7e44054dff19cd2b4 *man/evReturn.Rd
 e82f48886e0f6fc129b73b1075c86c5a *man/evRisk.Rd
 101f7aec515ea880d373d0dbeb666a53 *man/head.ts.Rd

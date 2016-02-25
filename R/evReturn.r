@@ -71,7 +71,7 @@ print.evReturn <- function(x, ...){
 } 
 
 plot.evReturn <- function(x, ...) {
-  qplot(x = x$abr$day, y = x$abr$HNt, geom = "path",
+  plot(x = x$abr$day, y = x$abr$HNt, type = "l",
     xlab = "Event Day",
     ylab = "Average Cumulative Abnormal Returns (%)")
 }

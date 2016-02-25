@@ -14,10 +14,10 @@ The ISBN of the book is 9780996585408. The book is available at http://www.amazo
 \tabular{ll}{
 Package:  \tab erer \cr
 Type:     \tab Package \cr
-Version:  \tab 2.4 \cr
-Date:     \tab 2015-8-30 \cr
+Version:  \tab 2.5 \cr
+Date:     \tab 2016-2-25 \cr
 Depends:  \tab R (>= 3.0.0), lmtest \cr
-Imports:  \tab systemfit, tseries, urca, ggplot2 \cr
+Imports:  \tab systemfit, tseries, urca \cr
 Suggests: \tab MASS \cr
 License:  \tab GPL (>= 2) \cr
 LazyLoad: \tab yes \cr
