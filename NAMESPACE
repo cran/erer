@@ -10,6 +10,7 @@ exportPattern(".")
 S3method("plot", "evReturn")
 S3method("plot", "maTrend")
 S3method("plot", "ocProb")
+S3method("plot", "urdf2")
 
 S3method("print", "aiFit")
 S3method("print", "aidata")

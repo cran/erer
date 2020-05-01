@@ -14,8 +14,8 @@ The ISBN of the book is 9780996585408. The book is available at http://www.amazo
 \tabular{ll}{
 Package:  \tab erer \cr
 Type:     \tab Package \cr
-Version:  \tab 2.5 \cr
-Date:     \tab 2016-2-25 \cr
+Version:  \tab 3.0 \cr
+Date:     \tab 2020-04-30 \cr
 Depends:  \tab R (>= 3.0.0), lmtest \cr
 Imports:  \tab systemfit, tseries, urca \cr
 Suggests: \tab MASS \cr

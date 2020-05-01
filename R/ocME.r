@@ -26,14 +26,14 @@ ocME <- function(w, rev.dum = TRUE, digits = 3)
 
   # 3. Calcualate marginal effects (ME)
   # 3.1 ME value
-  f.xb <- dfun(z[1:J] - xb) - dfun(z[2:(J+1)] - xb)
+  f.xb <- dfun(z[1:J] - c(xb)) - dfun(z[2:(J+1)] - c(xb))
   me <- b.est %*%  matrix(data = f.xb, nrow = 1)
   colnames(me) <- paste("effect", lev, sep = ".")
 
   # 3.2 ME error
   se <- matrix(0, nrow = K, ncol = J)
   for (j in 1:J) {
-    u1 <- c(z[j] - xb); u2 <- c(z[j+1] - xb)
+    u1 <- c(z[j] - c(xb)); u2 <- c(z[j+1] - c(xb))
     if (w$method == "probit") {
       s1 <- -u1; s2 <- -u2
     } else {

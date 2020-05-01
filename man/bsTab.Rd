@@ -8,7 +8,7 @@
   add.sig = c("coef", "TE"),
   percent = c(0.01, 0.05, 0.10),
   symbol = c("***", "**", "*", ""),
-  digits = c(3, 3, 3, 2), ... )
+  digits = c(3, 3, 3, 3), ... )
 }
 \arguments{
   \item{w }{ statistical results from regression models; an object of class \code{glm},  \code{lm}, and \code{systemfit} can be supplied directly, or a data frame with at least four columns with the sequence of estimates, errors, t-values, and p-values.}

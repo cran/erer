@@ -4,7 +4,7 @@ bsTab <- function(w,
   add.sig = c("coef", "TE"),
   percent = c(0.01, 0.05, 0.10),
   symbol = c("***", "**", "*", ""),
-  digits = c(3, 3, 3, 2), ... )
+  digits = c(3, 3, 3, 3), ... )
 {
   need <- match.arg(need)
   add.sig <- match.arg(add.sig)

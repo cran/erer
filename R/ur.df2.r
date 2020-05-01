@@ -1,5 +1,5 @@
 ur.df2 <- function (y, type = c("none", "drift", "trend"), lags = 1, 
-  selectlags = c("Fixed", "AIC", "BIC")) 
+  selectlags = c("Fixed", "AIC", "BIC"), digit = 2) 
 {
     selectlags <- match.arg(selectlags)
     type <- match.arg(type)
@@ -62,8 +62,7 @@ ur.df2 <- function (y, type = c("none", "drift", "trend"), lags = 1,
             teststat <- as.matrix(t(c(tau, phi2, phi3)))
             colnames(teststat) <- c("tau3", "phi2", "phi3")
         }
-    }
-    else {
+    } else {
         if (type == "none") {
             result <- lm(z.diff ~ z.lag.1 - 1)
             tau <- coef(summary(result))[1, 3]
@@ -141,13 +140,36 @@ ur.df2 <- function (y, type = c("none", "drift", "trend"), lags = 1,
 
     # report AIC and BIC values explicitly
     aic <- AIC(result, k=2)
-    bic <- AIC(result, k=log(NROW(y)))  
+    bic <- AIC(result, k=log(NROW(y)))
+    
+    # have a combined output = teststat [lag.used] ***
+    teststa <- abs(teststat); cva <- abs(cvals)
+    sig <- ifelse(test = teststa[1] > cva[1, 1], yes = "***", no = 
+           ifelse(test = teststa[1] > cva[1, 2], yes = "**" , no =
+           ifelse(test = teststa[1] > cva[1, 3], yes = "*"  , no = " ")))
+    
+    stat <- sprintf(fmt = paste0("%.", digit, "f"), teststat[1])
+    out <- paste0(stat, " [", lags - 1, "]", sig)      
     
     # change s4 to s3; report lag used
     final <- listn(y, model = type, cval = cvals, lags = lag, 
       lag.used=lags-1, teststat, testreg, res, aic, bic, 
-      test.name = "Augmented Dickey-Fuller Test")
+      test.name = "Augmented Dickey-Fuller Test", out)
     class(final) <- "urdf2"
     return(final)
 }
-print.urdf2 <- function(x,...) {print(x$teststat); print(x$cval)}
+print.urdf2 <- function(x, ...){
+  cat("\n=== Test statistics =========\n"); print(x$teststat);
+  cat("\n=== Test critical values ====\n"); print(x$cval);
+  cat("\n=== Combined output =========\n"); print(x$out);
+}
+
+plot.urdf2 <- function(x, ...){
+  oldpar <- par(no.readonly = TRUE); on.exit(par(oldpar))
+  par(mfrow = c(1, 1))
+  layout(matrix(c(1, 2, 1, 3), 2 , 2))
+  plot.ts(x$res, main = "Residuals", ylab = "", xlab = "")
+  abline(h = 0, col = "red")
+  acf( x$res, main = "Autocorrelations of Residuals")
+  pacf(x$res, main = "Partial Autocorrelations of Residuals")
+}
