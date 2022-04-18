@@ -29,7 +29,7 @@ Return a list object of class "evReturn" with the following components:
 }
 
 \references{Mei, B., and C. Sun. 2008. Event analysis of the impact of mergers and acquisitions on the financial performance of the U.S. forest products industry. Forest Policy and Economics 10(5):286-294.}
-\author{Changyou Sun (\email{cs258@.msstate.edu})}
+\author{Changyou Sun (\email{cs258@msstate.edu})}
 \seealso{\code{\link{evReturn}}}
 
 \examples{

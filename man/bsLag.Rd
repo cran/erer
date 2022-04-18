@@ -25,7 +25,7 @@ The name of the output data is composed of four parts: \code{prefix}, \code{var.
 The column of the output can be ordered either by the variable name (e.g., diff.GA.t_0, diff.GA.t_1, diff.ND.t_0, diff.ND.t_1), or by the lag order ((e.g., diff.GA.t_0, diff.ND.t_0, diff.GA.t_1, diff.ND.t_1).
 }
 \value{Return a multiple time series object.}
-\author{Changyou Sun (\email{cs258@.msstate.edu})}
+\author{Changyou Sun (\email{cs258@msstate.edu})}
 \examples{
 # simple example
 h1 <- ts(data=cbind(1:24), start=c(2001, 1), frequency=12)

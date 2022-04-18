@@ -16,7 +16,7 @@
 Return a dataframe object with the following columns: name, type, size, prettysize, rows, and columns.
 }
 
-\author{Changyou Sun (\email{cs258@.msstate.edu})}
+\author{Changyou Sun (\email{cs258@msstate.edu})}
 
 \seealso{\code{\link{ls}}.}
 

@@ -60,7 +60,7 @@ Berndt, E.R., and N.E. Savin. 1975. Estimation and hypothesis testing in singula
 Wan, Y., C. Sun, and D.L. Grebner. 2010. Analysis of import demand for wooden beds in the United States. Journal of Agricultural and Applied Economics 42(4):643-658.
 }
 
-\author{Changyou Sun (\email{cs258@.msstate.edu})}
+\author{Changyou Sun (\email{cs258@msstate.edu})}
 \seealso{\code{\link{aiDiag}}; \code{\link{aiElas}}; \code{\link{summary.aiFit}}; \code{\link{aiDynFit}}; \code{\link{aiStaHau}}; \code{\link{systemfitAR}}.}
 
 \examples{

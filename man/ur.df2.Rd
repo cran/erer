@@ -37,7 +37,7 @@ Return an object of class \code{ur.df2}: the new outputs are \code{lag.used}, \c
   }
 }
 
-\author{Changyou Sun (\email{cs258@.msstate.edu})}
+\author{Changyou Sun (\email{cs258@msstate.edu})}
 
 \seealso{\code{\link{ur.df}} in \code{urca} library.}
 

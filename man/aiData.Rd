@@ -50,7 +50,7 @@ Wan, Y., C. Sun, and D.L. Grebner. 2010. Analysis of import demand for wooden be
 }
 
 
-\author{Changyou Sun (\email{cs258@.msstate.edu})}
+\author{Changyou Sun (\email{cs258@msstate.edu})}
 \seealso{\code{\link{aiStaFit}}; \code{\link{daBedRaw}}; \code{\link{daBed}}.}
 
 \examples{

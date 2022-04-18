@@ -55,7 +55,7 @@ Mei, B., and C. Sun. 2008. Event analysis of the impact of mergers and acquisiti
 Sun, C., and X. Liao. 2011. Effects of litigation under the Endangered Species Act on forest firm values. Journal of Forest Economics 17(4):388-398.
 }
 
-\author{Changyou Sun (\email{cs258@.msstate.edu})}
+\author{Changyou Sun (\email{cs258@msstate.edu})}
 \seealso{\code{\link{evRisk}}}
 
 \examples{
