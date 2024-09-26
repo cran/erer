@@ -46,7 +46,7 @@
 
 \references{Greene, W.H. 2003. Econometric Analysis (5th ed.). Prentice Hall, New York. 1026 P.}
 
-\author{Changyou Sun (\email{cs258@msstate.edu})}
+\author{Changyou Sun (\email{edwinsun258@gmail.com})}
 
 \seealso{\code{\link{maBina}}; \code{\link{print.maTrend}}; \code{\link{plot.maTrend}}.}
 

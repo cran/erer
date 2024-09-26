@@ -1,4 +1,4 @@
-head.ts <- function(x, n = 5, ...) {
+headts <- function(x, n = 5, ...) {
   if (n > dim(as.matrix(x))[1]) {
     return(x)
   } else {
@@ -7,7 +7,7 @@ head.ts <- function(x, n = 5, ...) {
   }
 }
 
-tail.ts <- function(x, n = 5, ...) {
+tailts <- function(x, n = 5, ...) {
   if (n > dim(as.matrix(x))[1]) {
     return(x)
   } else {

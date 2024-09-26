@@ -25,7 +25,7 @@ The name of the output data is composed of four parts: \code{prefix}, \code{var.
 The column of the output can be ordered either by the variable name (e.g., diff.GA.t_0, diff.GA.t_1, diff.ND.t_0, diff.ND.t_1), or by the lag order ((e.g., diff.GA.t_0, diff.ND.t_0, diff.GA.t_1, diff.ND.t_1).
 }
 \value{Return a multiple time series object.}
-\author{Changyou Sun (\email{cs258@msstate.edu})}
+\author{Changyou Sun (\email{edwinsun258@gmail.com})}
 \examples{
 # simple example
 h1 <- ts(data=cbind(1:24), start=c(2001, 1), frequency=12)
@@ -61,8 +61,8 @@ res <- ts(resid, start=start(small), end=end(small),
     frequency=tsp(small)[3])
 lag.res <- bsLag(h=res, lag=2, prefix="resid.", var.name="china")
 str(lag.res)
-head(lag.res)
-tail(lag.res)
+headts(lag.res)
+tailts(lag.res)
 }
 
 \keyword{manip}

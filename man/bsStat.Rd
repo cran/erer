@@ -17,7 +17,7 @@ Two set of summary statistics are generated. One is correlation coefficients and
 }
 \value{A dataframe or list of the summary statistics.}
 
-\author{Changyou Sun (\email{cs258@msstate.edu})}
+\author{Changyou Sun (\email{edwinsun258@gmail.com})}
 
 \examples{
 data(daIns)

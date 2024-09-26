@@ -16,7 +16,7 @@
 \value{
 Return a list object of class "evReturn" with the following components:
   \item{x }{ a object from \code{evReturn}.}
-  \item{daEst }{  data used to estimate CAPM for the last firm as specified in code{firm}.}
+  \item{daEst }{  data used to estimate CAPM for the last firm as specified in \code{firm}.}
   \item{rb }{ fitted CAPM for the last firm.}
   \item{reg }{ regression coefficients by firm.}
 }
@@ -29,7 +29,7 @@ Return a list object of class "evReturn" with the following components:
 }
 
 \references{Mei, B., and C. Sun. 2008. Event analysis of the impact of mergers and acquisitions on the financial performance of the U.S. forest products industry. Forest Policy and Economics 10(5):286-294.}
-\author{Changyou Sun (\email{cs258@msstate.edu})}
+\author{Changyou Sun (\email{edwinsun258@gmail.com})}
 \seealso{\code{\link{evReturn}}}
 
 \examples{

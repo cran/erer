@@ -12,8 +12,8 @@ Close to 100 sample programs and data sets are used in the book. They are includ
 \tabular{ll}{
 Package:  \tab erer \cr
 Type:     \tab Package \cr
-Version:  \tab 3.1 \cr
-Date:     \tab 2022-04-18 \cr
+Version:  \tab 4.0 \cr
+Date:     \tab 2024-09-25 \cr
 Depends:  \tab R (>= 3.0.0), lmtest \cr
 Imports:  \tab systemfit, tseries, urca \cr
 Suggests: \tab MASS \cr
@@ -21,5 +21,5 @@ License:  \tab GPL (>= 2) \cr
 LazyLoad: \tab yes \cr
 }
 }
-\author{Changyou Sun (\email{cs258@msstate.edu})}
+\author{Changyou Sun (\email{edwinsun258@gmail.com})}
 \keyword{package} 

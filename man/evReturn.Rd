@@ -31,7 +31,7 @@ Return a list object of class "evReturn" with the following components:
   \item{event.win }{ the one-side width of event window in days.}
   \item{event.width }{  total number of days in an event window.}
   \item{est.win }{ the width of estimation window in days..}
-  \item{daEst }{  data used to estimate the market model for the last firm as specified in code{firm}.}
+  \item{daEst }{  data used to estimate the market model for the last firm as specified in \code{firm}.}
   \item{daEve }{  data over the event window for the last firm.}
   \item{ra }{ fitted market model for the last firm.}
   \item{digits }{ number of digits used to format outputs.}
@@ -55,7 +55,7 @@ Mei, B., and C. Sun. 2008. Event analysis of the impact of mergers and acquisiti
 Sun, C., and X. Liao. 2011. Effects of litigation under the Endangered Species Act on forest firm values. Journal of Forest Economics 17(4):388-398.
 }
 
-\author{Changyou Sun (\email{cs258@msstate.edu})}
+\author{Changyou Sun (\email{edwinsun258@gmail.com})}
 \seealso{\code{\link{evRisk}}}
 
 \examples{

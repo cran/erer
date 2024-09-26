@@ -23,5 +23,3 @@ S3method("print", "ocProb")
 S3method("print", "urdf2")
 
 S3method("summary", "aiFit")
-S3method("head", "ts")
-S3method("tail", "ts")

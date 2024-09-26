@@ -1,4 +1,4 @@
-download.lib <- function(pkgs, destdir = getwd(), mode = 'wb',
+download.lib <- function(pkgs, destdir = tempdir(), mode = 'wb',
   pdf.url = "http://cran.r-project.org/web/packages/", f.zip = TRUE,
   f.pdf = TRUE) 
 {

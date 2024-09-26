@@ -7,7 +7,7 @@ Downloading source and PDF version of R packages
 This function can download three documents for each package: zip version, source version (tar.gz), and PDF manual.
 }
 \usage{
-download.lib(pkgs, destdir = getwd(), mode = "wb", 
+download.lib(pkgs, destdir = tempdir(), mode = "wb", 
   pdf.url = "http://cran.r-project.org/web/packages/", 
   f.zip = TRUE, f.pdf = TRUE)
 }
@@ -27,14 +27,14 @@ This function is mainly used to download the source version of one or multiple p
 Return the packge names.
 }
 
-\author{Changyou Sun (\email{cs258@msstate.edu})}
+\author{Changyou Sun (\email{edwinsun258@gmail.com})}
 
 \seealso{\code{\link{download.packages}}; \code{\link{download.file}}.}
 
 \examples{
 
-\dontrun{
-  download.lib(pkgs = 'erer', destdir = 'c:/aErer/Rcode', 
+\donttest{
+  download.lib(pkgs = 'erer', destdir = tempdir(), 
     f.zip = FALSE, f.pdf = TRUE)
 }
 }

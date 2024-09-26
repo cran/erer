@@ -12,6 +12,8 @@
 }
 \details{This function is a wrap-up of \code{write.table}. It is convenient to write a set of tables to C drive.}
 
+\value{No return value}
+
 \seealso{\code{\link{write.table}}.}
 
 \examples{
@@ -25,10 +27,6 @@ h1; h2; h3
 
 test <- list(t1 = h1, t2 = h2, t3 = h3)
 
-\dontrun{
-  # test.csv can be saved at a specific working directory
-  getwd(); setwd("c:/aERER"); getwd()
-  write.list(z = test, file = "test.csv")
-}
+# The above list file can be saved at a specific working directory.
 }
 \keyword{manip}

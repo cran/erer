@@ -18,7 +18,7 @@ maBina <- function(w, x.mean = TRUE, rev.dum = TRUE, digits = 3,
   pfun <- switch(link, probit = pnorm, logit = plogis)
   dfun <- switch(link, probit = dnorm, logit = dlogis)  
   if (x.mean) {f.xb <- dfun(xb)} else {f.xb <- mean(dfun(x %*% b.est))}
-  me <- f.xb * coef(w)
+  me <- c(f.xb) * coef(w)
   
   # 3. Standard errors for ME
   if (link == "probit") {s <- -xb} else {s <- 1 - 2 * pfun(xb)}

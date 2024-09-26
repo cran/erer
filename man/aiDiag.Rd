@@ -14,7 +14,7 @@
 
 \references{Wan, Y., C. Sun, and D.L. Grebner. 2010. Analysis of import demand for wooden beds in the United States. Journal of Agricultural and Applied Economics 42(4):643-658.}
 
-\author{Changyou Sun (\email{cs258@msstate.edu})}
+\author{Changyou Sun (\email{edwinsun258@gmail.com})}
 \seealso{\code{\link{aiStaFit}}; \code{\link{aiDynFit}}.}
 
 \examples{

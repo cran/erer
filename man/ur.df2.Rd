@@ -13,7 +13,7 @@
   \item{selectlags }{ Lag selection can be achieved according to the Akaike "AIC" or the Bayes "BIC" information criteria. The maximum number of lags considered is set by lags. The default is to use a "fixed" lag length set by lags.}
   \item{digit }{ The digit choice.}
 }
-\details{This is a modification of \code{ur.df} in the library of \code{urca}. The function was written in S4, and it is changed into S3. The lag selected by AIC or BIC is reported explicitly through \code{lag.used} in the output list. In addition, the values of AIC and BIC statistics are reported.}
+\details{This is a modification of \code{\link[urca]{ur.df}} in the library of \code{urca}. The function was written in S4, and it is changed into S3. The lag selected by AIC or BIC is reported explicitly through \code{lag.used} in the output list. In addition, the values of AIC and BIC statistics are reported.}
 
 \value{
 Return an object of class \code{ur.df2}: the new outputs are \code{lag.used}, \code{aic}, and \code{bic}.
@@ -37,9 +37,9 @@ Return an object of class \code{ur.df2}: the new outputs are \code{lag.used}, \c
   }
 }
 
-\author{Changyou Sun (\email{cs258@msstate.edu})}
+\author{Changyou Sun (\email{edwinsun258@gmail.com})}
 
-\seealso{\code{\link{ur.df}} in \code{urca} library.}
+\seealso{\code{\link[urca]{ur.df}} in \code{urca} library.}
 
 \examples{
 # see the code for the study: Japan and China wood product imports

@@ -50,7 +50,7 @@ Wan, Y., C. Sun, and D.L. Grebner. 2010. Analysis of import demand for wooden be
 }
 
 
-\author{Changyou Sun (\email{cs258@msstate.edu})}
+\author{Changyou Sun (\email{edwinsun258@gmail.com})}
 \seealso{\code{\link{aiStaFit}}; \code{\link{daBedRaw}}; \code{\link{daBed}}.}
 
 \examples{
@@ -67,10 +67,8 @@ imp5 <- update(imp4, label = c("CN", "VN", "ID", "MY"))
 imp8; imp4; imp5
 daTest <- imp8$out
 colnames(daTest)[18:20] <- c("dum1", "dum2", "dum3")
-head(daTest)
 
 data(daBed)
-head(daTest); head(daBed)
 identical(daBed, daTest)
 }
 \keyword{manip}

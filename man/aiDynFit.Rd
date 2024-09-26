@@ -52,7 +52,7 @@ Berndt, E.R., and N.E. Savin. 1975. Estimation and hypothesis testing in singula
 Wan, Y., C. Sun, and D.L. Grebner. 2010. Analysis of import demand for wooden beds in the United States. Journal of Agricultural and Applied Economics 42(4):643-658.
 }
 
-\author{Changyou Sun (\email{cs258@msstate.edu})}
+\author{Changyou Sun (\email{edwinsun258@gmail.com})}
 \seealso{\code{\link{systemfitAR}}; \code{\link{aiStaFit}}; \code{\link{aiDiag}}; \code{\link{aiElas}}; \code{summary.aiFit}.}
 
 \examples{
@@ -70,8 +70,8 @@ rSta <- aiStaFit(y = daBed, share = sh, price = pr, shift = du3,
   expen = "rte", omit = "sRW", hom = TRUE, sym = TRUE)
 summary(rSta)
 
-# The following steps should work. It takes about 20 seconds.
-\dontrun{
+# The following steps should work. It can take a few minutes.
+\donttest{
 # 2.2 The final Hausman test and new data
 (dg <- daExp[, "dg"])
 rHau <- aiStaHau(x = rSta, instr = dg, choice = FALSE)

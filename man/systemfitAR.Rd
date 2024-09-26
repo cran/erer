@@ -38,35 +38,35 @@ systemfitAR(formula, method = "OLS", inst = NULL, data = list(),
       on the coefficients by post-multiplying the regressor matrix
       with this matrix (see details).}
    \item{control}{list of control parameters.
-      The default is constructed by the function \code{\link{systemfit.control}}.
-      See the documentation of \code{\link{systemfit.control}} for details.}
+      The default is constructed by the function \code{\link[systemfit]{systemfit.control}}.
+      See the documentation of \code{\link[systemfit]{systemfit.control}} for details.}
    \item{pooled}{logical, restrict coefficients to be equal in all equations
       (only for panel-like data).}
    \item{AR1 }{ whether first-order autocorrelation is corrected}
    \item{rho.sel }{how rho is computed; \code{rho.sel = "all"} means that the system is estimated as a single equation and the residuals are used to compute rho. If "mean", each equation in the system is estimated separately and the average of rhos from all the equations are used.}   
    \item{model }{Static model has interceipt, while dynamic model has no intercept; see translog cost function and the package for detail.}
-   \item{...}{arguments passed to \code{\link{systemfit.control}}.}
+   \item{...}{arguments passed to \code{\link[systemfit]{systemfit.control}}.}
 }
 
 \details{
-   This is a wrapper of \code{systemfit} with an addition of autocorrelation correction. It is mainly used for SUR model with autocorrelation. The main reference sources are Greene (2003), LIMDEP 9.0 manual, Judge et al. (1985), and Berndt and Savin (1975).
+   This is a wrapper of \code{\link[systemfit]{systemfit}} with an addition of autocorrelation correction. It is mainly used for SUR model with autocorrelation. The main reference sources are Greene (2003), LIMDEP 9.0 manual, Judge et al. (1985), and Berndt and Savin (1975).
 }
 
 \value{
-  \code{systemfit} returns a list of the class \code{systemfit}.
+  \code{\link[systemfit]{systemfit}} returns a list of the class \code{\link[systemfit]{systemfit}}.
   This list contains one special object: "eq". It is a list and contains
   one object for each estimated equation. These objects are of the class
   \code{systemfit.equation} and contain the results that belong only to the
   regarding equation.  In addition, there are four new items in the output:
 
-  The objects of the class \code{systemfit} and
+  The objects of the class \code{\link[systemfit]{systemfit}} and
   \code{systemfit.equation} have the following components (the elements of
   the latter are marked with an asterisk (\eqn{*})):
 
   \item{rho }{ autocorrelation coefficient}
   \item{rho_ste }{standard error of rho; if \code{rho.sel = "mean"}, then it is a vector of the standar errors for individual equations.}
-  \item{data }{data used for \code{systemfit}; this is data adjusted for autocorrelation if \code{AR1 = TRUE}; otherwise, it is just the raw data.}
-  \item{formula }{ forumula used for \code{systemfit}. This can be adjusted for autocorrelation; costant is adjusted as (1 - rho).}    
+  \item{data }{data used for \code{\link[systemfit]{systemfit}}; this is data adjusted for autocorrelation if \code{AR1 = TRUE}; otherwise, it is just the raw data.}
+  \item{formula }{ forumula used for \code{\link[systemfit]{systemfit}}. This can be adjusted for autocorrelation; costant is adjusted as (1 - rho).}    
 }
 
 \references{
@@ -81,9 +81,9 @@ systemfitAR(formula, method = "OLS", inst = NULL, data = list(),
   Berndt, E.R., and N.E. Savin. 1975. Estimation and hypothesis testing in singular equation systems with autoregressive disturbances. Econometrica 43(5/6):937-957.
 }
 
-\author{Changyou Sun (\email{cs258@msstate.edu})}
+\author{Changyou Sun (\email{edwinsun258@gmail.com})}
 
-\seealso{\code{\link{lm}}; \code{\link{aiStaFit}}; \code{\link{systemfit}}}
+\seealso{\code{\link[stats]{lm}}; \code{\link{aiStaFit}}; \code{\link[systemfit]{systemfit}}}
 
 \examples{
 # Check Berndt and Savin (1975) dataset
